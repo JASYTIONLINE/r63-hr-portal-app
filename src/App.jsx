@@ -8,11 +8,11 @@ function App() {
   const [todos, setTodos] = useState([])
   const [inputValue, setInputValue] = useState('');
 
-  // const todos = [
-  //   { id: 1, title: 'Learn React', completed: true },
-  //   { id: 2, title: 'Build a React App', completed: false },
-  //   { id: 3, title: 'Deploy the App', completed: false },
-  // ]
+   const todos = [
+     { id: 1, title: 'Learn React', completed: true },
+    { id: 2, title: 'Build a React App', completed: false },
+     { id: 3, title: 'Deploy the App', completed: false },
+   ]
   const addTodo = () => {
     if (inputValue.trim()) {
       setTodos([...todos, inputValue]);
@@ -46,9 +46,9 @@ function App() {
       </ul>
 
    
-      {/* <SimpleComponent todos={todos}/> */}
-      {/* <Counter />
-      <ConditionalComponent /> */}
+      { <SimpleComponent todos={todos}/> }
+      { <Counter >
+      <ConditionalComponent /> }
     </>
   )
 }
