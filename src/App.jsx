@@ -1,56 +1,20 @@
-import { useState } from "react"
+// App.jsx
+// ----------------------------------------------------
+// This is your root React component.
+// It returns a simple <h1>Hello World</h1> element,
+// which will be rendered inside the root <div> in index.html.
+// ----------------------------------------------------
 
-import SimpleComponent from "./components/SimpleComponent/SimpleComponent"
-import Counter from "./components/Counter/Counter"
-import ConditionalComponent from "./components/ConditionalComponent/ConditionalComponent"
+import React from "react";
 
+// Functional component syntax — modern React best practice
 function App() {
-  const [todos, setTodos] = useState([])
-  const [inputValue, setInputValue] = useState('');
-
-   const todos = [
-     { id: 1, title: 'Learn React', completed: true },
-    { id: 2, title: 'Build a React App', completed: false },
-     { id: 3, title: 'Deploy the App', completed: false },
-   ]
-  const addTodo = () => {
-    if (inputValue.trim()) {
-      setTodos([...todos, inputValue]);
-      setInputValue('');
-    }
-  };
-  console.log("TODOS", todos)
-
   return (
-    <>
-      <input
-        type="text"
-        placeholder="Add a new todo"
-        value={inputValue}
-        onChange={(e) => setInputValue(e.target.value)}
-      />
-      <button onClick={addTodo}>Add Todo</button>
-      <ul>
-      {todos.map((todo, index) => (
-          <li
-            key={index}
-            onClick={() => {
-              const newTodos = [...todos]; // Copy the array
-              newTodos.splice(index, 1); // Remove the clicked item
-              setTodos(newTodos); // Update state
-            }}
-          >
-            {todo}
-          </li>
-        ))}
-      </ul>
-
-   
-      { <SimpleComponent todos={todos}/> }
-      { <Counter >
-      <ConditionalComponent /> }
-    </>
-  )
+    <div>
+      <h1>Hello World</h1>
+    </div>
+  );
 }
 
-export default App
+// Export it so index.js can import and render it
+export default App;
