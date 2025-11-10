@@ -1,0 +1,23 @@
+{
+  "users": {
+    "uid001": {
+      "role": "employee",
+      "name": "Alex Kim",
+      "email": "alex@example.com"
+    },
+    "uid002": {
+      "role": "hr",
+      "name": "Jordan Lee",
+      "email": "jordan@example.com"
+    }
+  },
+  "leaveRequests": {
+    "req001": {
+      "employeeId": "uid001",
+      "startDate": "2025-11-20",
+      "endDate": "2025-11-24",
+      "reason": "Family event",
+      "status": "pending"
+    }
+  }
+}

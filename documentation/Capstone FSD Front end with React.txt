@@ -35,3 +35,111 @@ Develop a responsive, user-friendly HR portal that enables employees to register
 9. Inline documentation and setup notes
 10. Working demo via Vite dev server
 
+Convention NOTE: Every file will follow this same pattern:
+
+Imports
+
+Declarations (functions, hooks, constants)
+
+export statements at the end
+
+That way, if you add more components or utility functions to the same file later, all your exports stay grouped and predictable.
+
+
+Here’s the **Work Breakdown Structure (WBS)** formatted in standard numbered outline form — concise, hierarchical, and aligned with your **Capstone FSD Front-End with React** deliverables and scope.  Keep track of what we have completed and what step we are on at all times.
+
+---
+
+# **HR Portal Front-End (Capstone Project) – Work Breakdown Structure**
+
+## **1.0 Project Initialization**
+
+1.1 Create project folder and initialize React + Vite environment
+1.2 Install dependencies (React Router, Bootstrap, Firebase)
+1.3 Configure Firebase project and `.env` environment variables
+1.4 Verify Realtime Database connection (read test from `/users`)
+1.5 Initialize Git repository and make initial commit
+
+---
+
+## **2.0 Base Structure and Routing**
+
+2.1 Create directory structure: `/src/pages`, `/src/components`, `/src/routes`
+2.2 Build initial pages:
+ 2.2.1 `App.jsx` (Landing / Project Charter page)
+ 2.2.2 `Login.jsx` (Simulated login)
+ 2.2.3 `EmployeeDashboard.jsx`
+ 2.2.4 `HRDashboard.jsx`
+2.3 Configure routing in `router.jsx` (paths: `/`, `/login`, `/employee`, `/hr`)
+2.4 Test route navigation and component rendering
+
+---
+
+## **3.0 Firebase Integration**
+
+3.1 Connect `firebase.js` to Realtime Database using `getDatabase(app)`
+3.2 Implement read functions for `/users`
+3.3 Implement write functions for `/leaveRequests`
+3.4 Implement update and delete for HR approval workflow
+3.5 Validate CRUD operations and confirm data synchronization
+
+---
+
+## **4.0 UI Design and Layout**
+
+4.1 Apply Bootstrap grid and responsive layout system
+4.2 Implement CRAP design principles:
+ 4.2.1 Contrast – readable color palette
+ 4.2.2 Repetition – consistent buttons, headers
+ 4.2.3 Alignment – uniform margins and grids
+ 4.2.4 Proximity – logical grouping of related elements
+4.3 Build reusable UI components:
+ 4.3.1 Navigation bar
+ 4.3.2 Footer
+ 4.3.3 Cards and forms
+4.4 Verify responsive behavior across devices
+
+---
+
+## **5.0 Role Logic and Data Binding**
+
+5.1 Build login logic (match email from `/users` to determine role)
+5.2 Redirect users to correct dashboard based on role (HR / Employee)
+5.3 Bind Firebase data to dashboard components dynamically
+5.4 Implement form validation and submission feedback
+
+---
+
+## **6.0 Documentation and Version Control**
+
+6.1 Write inline code documentation (purpose and rationale)
+6.2 Draft project README (installation, setup, usage)
+6.3 Maintain clean commit history with descriptive messages
+6.4 Push final version to GitHub repository
+
+---
+
+## **7.0 Testing and Presentation**
+
+7.1 Conduct functional testing (navigation, CRUD, role routing)
+7.2 Conduct UI/UX testing (responsiveness, accessibility)
+7.3 Prepare screen recording or demo walkthrough for submission
+7.4 Finalize project evaluation checklist and archive deliverables
+
+---
+
+### **Deliverables Summary**
+
+| Phase | Deliverable          | Output                                 |
+| ----- | -------------------- | -------------------------------------- |
+| 1.0   | Environment setup    | Vite + React app connected to Firebase |
+| 2.0   | Core structure       | Routing and base pages created         |
+| 3.0   | Database integration | Live CRUD operations functioning       |
+| 4.0   | UI design            | Responsive Bootstrap layout            |
+| 5.0   | Role logic           | HR and Employee dashboards             |
+| 6.0   | Documentation        | README and inline comments             |
+| 7.0   | Testing              | Working MVP ready for demo             |
+
+---
+
+Would you like this exported as a `.md` (Markdown) document so you can drop it directly into your repo under `/docs` or attach it to your Project Charter page?
