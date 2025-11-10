@@ -1,6 +1,30 @@
-Here’s your **Discord post draft** — ready to paste as-is:
+Important NOTE:
+Modern React + Vite Conventions (2025 Update)
 
----
+(Annotation – Do Not Remove)
+
+This project follows **current industry-standard React + Vite practices (React 19, Vite 7)
+
+1. **No manual `index.html` editing** — Vite manages the entry HTML internally.
+2. **`App.jsx` is the functional “index page”** — it serves as the main layout and router host.
+3. **`main.jsx` bootstraps React** — it mounts the app using `ReactDOM.createRoot()`; no HTML edits required.
+4. **File structure** follows:
+
+   ```
+   src/
+   ├── App.jsx          ← root-level layout and routes
+   ├── main.jsx         ← entry point (imports App)
+   ├── pages/           ← routed pages (Login, HRDashboard, EmployeeDashboard)
+   ├── components/      ← reusable UI elements (Navbar, Footer, etc.)
+   ├── routes/          ← router configuration (router.jsx)
+   ├── firebase.js      ← database config and export
+   └── assets/          ← static assets
+   ```
+5. **Firebase Realtime Database** is used only as a live JSON endpoint; no custom backend logic.
+6. **Bootstrap 5** handles layout and responsiveness (Tailwind optional).
+7. **Exports always appear at the bottom of files.**
+
+This annotation supersedes all legacy patterns (manual `index.html`, direct DOM rendering, etc.). Future updates or threads must follow this structure.
 
 **🚀 Project Kickoff – HR Portal Front-End (Capstone Project)**
 
