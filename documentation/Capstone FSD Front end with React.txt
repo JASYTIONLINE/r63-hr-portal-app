@@ -1,0 +1,37 @@
+Here’s your **Discord post draft** — ready to paste as-is:
+
+---
+
+**🚀 Project Kickoff – HR Portal Front-End (Capstone Project)**
+
+This post begins our discussion on the Phase-End Project. To start, here’s the **Project Charter**, which defines the purpose, scope, and structure of our work. A **project charter** is a short document that authorizes the project and gives a clear picture of its goals, scope, key roles, and success criteria—it serves as the foundation for all planning and execution steps that follow.
+
+---
+
+### **Project Charter – HR Portal Front-End (Capstone Project)**
+
+**Purpose / Objective:**
+Develop a responsive, user-friendly HR portal that enables employees to register, update profiles, and submit leave requests while allowing HR staff to manage employee data efficiently.
+
+**Scope:**
+
+* Built with **HTML, CSS, JavaScript, React, Vite, Bootstrap, and Firebase Realtime Database**.
+* Design based on **CRAP principles** (Contrast, Repetition, Alignment, Proximity).
+* Role-based access for Employee and HR users.
+* Includes login/signup, profile management, and leave request modules.
+* Integrates Firebase for storage, authentication, and dynamic updates.
+* Maintains full Git version history with clear commits.
+
+**Deliverables:**
+
+1. Intro / Landing Page (Project Charter + “Enter Portal” link)
+2. Login / Signup Page (Firebase authentication)
+3. Employee Dashboard (profile + leave request)
+4. HR Dashboard (employee data + leave approval)
+5. Firebase Realtime Database integration
+6. Bootstrap UI using CRAP design principles
+7. React Router navigation and role-based access
+8. GitHub repository with version control
+9. Inline documentation and setup notes
+10. Working demo via Vite dev server
+
