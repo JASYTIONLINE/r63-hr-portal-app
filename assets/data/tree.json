@@ -24,7 +24,7 @@
     "path": ".git/COMMIT_EDITMSG",
     "type": "file",
     "ext": "",
-    "size": 46,
+    "size": 87,
     "title": null,
     "sitemap": null,
     "category": "unknown"
@@ -224,7 +224,7 @@
     "path": ".git/index",
     "type": "file",
     "ext": "",
-    "size": 3247,
+    "size": 3412,
     "title": null,
     "sitemap": null,
     "category": "unknown"
@@ -264,7 +264,7 @@
     "path": ".git/logs/HEAD",
     "type": "file",
     "ext": "",
-    "size": 1775,
+    "size": 2002,
     "title": null,
     "sitemap": null,
     "category": "unknown"
@@ -294,7 +294,7 @@
     "path": ".git/logs/refs/heads/master",
     "type": "file",
     "ext": "",
-    "size": 1775,
+    "size": 2002,
     "title": null,
     "sitemap": null,
     "category": "unknown"
@@ -334,7 +334,7 @@
     "path": ".git/logs/refs/remotes/origin/master",
     "type": "file",
     "ext": "",
-    "size": 1323,
+    "size": 1470,
     "title": null,
     "sitemap": null,
     "category": "unknown"
@@ -870,6 +870,26 @@
     "category": "unknown"
   },
   {
+    "name": "3b",
+    "path": ".git/objects/3b",
+    "type": "folder",
+    "ext": null,
+    "size": null,
+    "title": null,
+    "sitemap": null,
+    "category": null
+  },
+  {
+    "name": "cc5f5927bf2894587ade42a54c6509eaab16cd",
+    "path": ".git/objects/3b/cc5f5927bf2894587ade42a54c6509eaab16cd",
+    "type": "file",
+    "ext": "",
+    "size": 53,
+    "title": null,
+    "sitemap": null,
+    "category": "unknown"
+  },
+  {
     "name": "3c",
     "path": ".git/objects/3c",
     "type": "folder",
@@ -925,6 +945,16 @@
     "type": "file",
     "ext": "",
     "size": 69,
+    "title": null,
+    "sitemap": null,
+    "category": "unknown"
+  },
+  {
+    "name": "e1dc905565cf4eb48231bd9c8104c1f2d72367",
+    "path": ".git/objects/4b/e1dc905565cf4eb48231bd9c8104c1f2d72367",
+    "type": "file",
+    "ext": "",
+    "size": 85625,
     "title": null,
     "sitemap": null,
     "category": "unknown"
@@ -1040,6 +1070,26 @@
     "category": "unknown"
   },
   {
+    "name": "63",
+    "path": ".git/objects/63",
+    "type": "folder",
+    "ext": null,
+    "size": null,
+    "title": null,
+    "sitemap": null,
+    "category": null
+  },
+  {
+    "name": "7b9cc654444a5fd8b1ca301112964da8d682c6",
+    "path": ".git/objects/63/7b9cc654444a5fd8b1ca301112964da8d682c6",
+    "type": "file",
+    "ext": "",
+    "size": 2533,
+    "title": null,
+    "sitemap": null,
+    "category": "unknown"
+  },
+  {
     "name": "67",
     "path": ".git/objects/67",
     "type": "folder",
@@ -1055,6 +1105,26 @@
     "type": "file",
     "ext": "",
     "size": 355,
+    "title": null,
+    "sitemap": null,
+    "category": "unknown"
+  },
+  {
+    "name": "6b",
+    "path": ".git/objects/6b",
+    "type": "folder",
+    "ext": null,
+    "size": null,
+    "title": null,
+    "sitemap": null,
+    "category": null
+  },
+  {
+    "name": "c44f6ccf311dacc2a938c1b0bad35446d664a5",
+    "path": ".git/objects/6b/c44f6ccf311dacc2a938c1b0bad35446d664a5",
+    "type": "file",
+    "ext": "",
+    "size": 217,
     "title": null,
     "sitemap": null,
     "category": "unknown"
@@ -1160,6 +1230,46 @@
     "category": "unknown"
   },
   {
+    "name": "78",
+    "path": ".git/objects/78",
+    "type": "folder",
+    "ext": null,
+    "size": null,
+    "title": null,
+    "sitemap": null,
+    "category": null
+  },
+  {
+    "name": "61f22ede9e123c4c106ecdd6e3669e102af0ba",
+    "path": ".git/objects/78/61f22ede9e123c4c106ecdd6e3669e102af0ba",
+    "type": "file",
+    "ext": "",
+    "size": 331,
+    "title": null,
+    "sitemap": null,
+    "category": "unknown"
+  },
+  {
+    "name": "7b",
+    "path": ".git/objects/7b",
+    "type": "folder",
+    "ext": null,
+    "size": null,
+    "title": null,
+    "sitemap": null,
+    "category": null
+  },
+  {
+    "name": "e8a921a37808b2e940f9c8ddfed414a660be0c",
+    "path": ".git/objects/7b/e8a921a37808b2e940f9c8ddfed414a660be0c",
+    "type": "file",
+    "ext": "",
+    "size": 2748,
+    "title": null,
+    "sitemap": null,
+    "category": "unknown"
+  },
+  {
     "name": "7e",
     "path": ".git/objects/7e",
     "type": "folder",
@@ -1210,6 +1320,26 @@
     "category": "unknown"
   },
   {
+    "name": "83",
+    "path": ".git/objects/83",
+    "type": "folder",
+    "ext": null,
+    "size": null,
+    "title": null,
+    "sitemap": null,
+    "category": null
+  },
+  {
+    "name": "eed2b2f61c919bbce0c0ed90aa8363d51173db",
+    "path": ".git/objects/83/eed2b2f61c919bbce0c0ed90aa8363d51173db",
+    "type": "file",
+    "ext": "",
+    "size": 134,
+    "title": null,
+    "sitemap": null,
+    "category": "unknown"
+  },
+  {
     "name": "87",
     "path": ".git/objects/87",
     "type": "folder",
@@ -1225,6 +1355,26 @@
     "type": "file",
     "ext": "",
     "size": 2707,
+    "title": null,
+    "sitemap": null,
+    "category": "unknown"
+  },
+  {
+    "name": "88",
+    "path": ".git/objects/88",
+    "type": "folder",
+    "ext": null,
+    "size": null,
+    "title": null,
+    "sitemap": null,
+    "category": null
+  },
+  {
+    "name": "5a862c3c7b238956377b58ffb4b785f9f0e2f5",
+    "path": ".git/objects/88/5a862c3c7b238956377b58ffb4b785f9f0e2f5",
+    "type": "file",
+    "ext": "",
+    "size": 86,
     "title": null,
     "sitemap": null,
     "category": "unknown"
@@ -1255,6 +1405,26 @@
     "type": "file",
     "ext": "",
     "size": 261,
+    "title": null,
+    "sitemap": null,
+    "category": "unknown"
+  },
+  {
+    "name": "8d",
+    "path": ".git/objects/8d",
+    "type": "folder",
+    "ext": null,
+    "size": null,
+    "title": null,
+    "sitemap": null,
+    "category": null
+  },
+  {
+    "name": "f6ab7ce009a46e646dc0183c9fbaafc98f3270",
+    "path": ".git/objects/8d/f6ab7ce009a46e646dc0183c9fbaafc98f3270",
+    "type": "file",
+    "ext": "",
+    "size": 257,
     "title": null,
     "sitemap": null,
     "category": "unknown"
@@ -1560,6 +1730,26 @@
     "category": "unknown"
   },
   {
+    "name": "c3",
+    "path": ".git/objects/c3",
+    "type": "folder",
+    "ext": null,
+    "size": null,
+    "title": null,
+    "sitemap": null,
+    "category": null
+  },
+  {
+    "name": "44964b5a68a90938188ba016d2f2cda08f605b",
+    "path": ".git/objects/c3/44964b5a68a90938188ba016d2f2cda08f605b",
+    "type": "file",
+    "ext": "",
+    "size": 649,
+    "title": null,
+    "sitemap": null,
+    "category": "unknown"
+  },
+  {
     "name": "c4",
     "path": ".git/objects/c4",
     "type": "folder",
@@ -1715,6 +1905,26 @@
     "type": "file",
     "ext": "",
     "size": 392,
+    "title": null,
+    "sitemap": null,
+    "category": "unknown"
+  },
+  {
+    "name": "d6",
+    "path": ".git/objects/d6",
+    "type": "folder",
+    "ext": null,
+    "size": null,
+    "title": null,
+    "sitemap": null,
+    "category": null
+  },
+  {
+    "name": "e0f5b04a3752a1636c1ddc4127ab435fb75fd0",
+    "path": ".git/objects/d6/e0f5b04a3752a1636c1ddc4127ab435fb75fd0",
+    "type": "file",
+    "ext": "",
+    "size": 72,
     "title": null,
     "sitemap": null,
     "category": "unknown"
@@ -1890,6 +2100,26 @@
     "category": "unknown"
   },
   {
+    "name": "e9",
+    "path": ".git/objects/e9",
+    "type": "folder",
+    "ext": null,
+    "size": null,
+    "title": null,
+    "sitemap": null,
+    "category": null
+  },
+  {
+    "name": "e499a19e2535faf1ccd5fd7069b67beba02c6a",
+    "path": ".git/objects/e9/e499a19e2535faf1ccd5fd7069b67beba02c6a",
+    "type": "file",
+    "ext": "",
+    "size": 53,
+    "title": null,
+    "sitemap": null,
+    "category": "unknown"
+  },
+  {
     "name": "ea",
     "path": ".git/objects/ea",
     "type": "folder",
@@ -1905,6 +2135,26 @@
     "type": "file",
     "ext": "",
     "size": 166,
+    "title": null,
+    "sitemap": null,
+    "category": "unknown"
+  },
+  {
+    "name": "eb",
+    "path": ".git/objects/eb",
+    "type": "folder",
+    "ext": null,
+    "size": null,
+    "title": null,
+    "sitemap": null,
+    "category": null
+  },
+  {
+    "name": "b8bb3542c38ae0a23a1744cb4ee8330cf6695d",
+    "path": ".git/objects/eb/b8bb3542c38ae0a23a1744cb4ee8330cf6695d",
+    "type": "file",
+    "ext": "",
+    "size": 242134,
     "title": null,
     "sitemap": null,
     "category": "unknown"
@@ -1935,6 +2185,16 @@
     "type": "file",
     "ext": "",
     "size": 284,
+    "title": null,
+    "sitemap": null,
+    "category": "unknown"
+  },
+  {
+    "name": "d63864a2065d930001fcfed947ab897e4a066c",
+    "path": ".git/objects/ec/d63864a2065d930001fcfed947ab897e4a066c",
+    "type": "file",
+    "ext": "",
+    "size": 426,
     "title": null,
     "sitemap": null,
     "category": "unknown"
@@ -1998,6 +2258,16 @@
     "title": null,
     "sitemap": null,
     "category": null
+  },
+  {
+    "name": "cf107086c3e772f8c64a7a98d5738c13d54e0b",
+    "path": ".git/objects/ff/cf107086c3e772f8c64a7a98d5738c13d54e0b",
+    "type": "file",
+    "ext": "",
+    "size": 781,
+    "title": null,
+    "sitemap": null,
+    "category": "unknown"
   },
   {
     "name": "eb7309eb54e56777149770ba330da914e4ac1a",
@@ -2144,7 +2414,7 @@
     "path": "assets/data/tree.json",
     "type": "file",
     "ext": ".json",
-    "size": 3604247,
+    "size": 3604437,
     "title": null,
     "sitemap": null,
     "category": "data"
@@ -154830,41 +155100,31 @@
     "category": null
   },
   {
-    "name": "ConditionalComponent",
-    "path": "src/components/ConditionalComponent",
-    "type": "folder",
-    "ext": null,
-    "size": null,
-    "title": null,
-    "sitemap": null,
-    "category": null
-  },
-  {
-    "name": "ConditionalComponent.jsx",
-    "path": "src/components/ConditionalComponent/ConditionalComponent.jsx",
+    "name": "ActionButton.jsx",
+    "path": "src/components/ActionButton.jsx",
     "type": "file",
     "ext": ".jsx",
-    "size": 562,
+    "size": 1816,
     "title": null,
     "sitemap": null,
     "category": "unknown"
   },
   {
-    "name": "Counter",
-    "path": "src/components/Counter",
-    "type": "folder",
-    "ext": null,
-    "size": null,
-    "title": null,
-    "sitemap": null,
-    "category": null
-  },
-  {
-    "name": "Counter.jsx",
-    "path": "src/components/Counter/Counter.jsx",
+    "name": "CardContainer.jsx",
+    "path": "src/components/CardContainer.jsx",
     "type": "file",
     "ext": ".jsx",
-    "size": 422,
+    "size": 1816,
+    "title": null,
+    "sitemap": null,
+    "category": "unknown"
+  },
+  {
+    "name": "Footer.jsx",
+    "path": "src/components/Footer.jsx",
+    "type": "file",
+    "ext": ".jsx",
+    "size": 1816,
     "title": null,
     "sitemap": null,
     "category": "unknown"
@@ -154874,37 +155134,27 @@
     "path": "src/components/HelloWorld.jsx",
     "type": "file",
     "ext": ".jsx",
-    "size": 375,
+    "size": 1372,
     "title": null,
     "sitemap": null,
     "category": "unknown"
   },
   {
-    "name": "SimpleComponent",
-    "path": "src/components/SimpleComponent",
-    "type": "folder",
-    "ext": null,
-    "size": null,
-    "title": null,
-    "sitemap": null,
-    "category": null
-  },
-  {
-    "name": "component.css",
-    "path": "src/components/SimpleComponent/component.css",
-    "type": "file",
-    "ext": ".css",
-    "size": 61,
-    "title": null,
-    "sitemap": null,
-    "category": "stylesheet"
-  },
-  {
-    "name": "SimpleComponent.jsx",
-    "path": "src/components/SimpleComponent/SimpleComponent.jsx",
+    "name": "Hero.jsx",
+    "path": "src/components/Hero.jsx",
     "type": "file",
     "ext": ".jsx",
-    "size": 688,
+    "size": 1816,
+    "title": null,
+    "sitemap": null,
+    "category": "unknown"
+  },
+  {
+    "name": "Navbar.jsx",
+    "path": "src/components/Navbar.jsx",
+    "type": "file",
+    "ext": ".jsx",
+    "size": 1816,
     "title": null,
     "sitemap": null,
     "category": "unknown"
@@ -154954,7 +155204,17 @@
     "path": "src/pages/EmployeeDashboard.jsx",
     "type": "file",
     "ext": ".jsx",
-    "size": 0,
+    "size": 1816,
+    "title": null,
+    "sitemap": null,
+    "category": "unknown"
+  },
+  {
+    "name": "Home.jsx",
+    "path": "src/pages/Home.jsx",
+    "type": "file",
+    "ext": ".jsx",
+    "size": 1816,
     "title": null,
     "sitemap": null,
     "category": "unknown"
@@ -154964,7 +155224,7 @@
     "path": "src/pages/HRDashboard.jsx",
     "type": "file",
     "ext": ".jsx",
-    "size": 0,
+    "size": 1816,
     "title": null,
     "sitemap": null,
     "category": "unknown"
@@ -154974,7 +155234,7 @@
     "path": "src/pages/Login.jsx",
     "type": "file",
     "ext": ".jsx",
-    "size": 0,
+    "size": 1816,
     "title": null,
     "sitemap": null,
     "category": "unknown"
@@ -154995,6 +155255,26 @@
     "type": "file",
     "ext": ".jsx",
     "size": 672,
+    "title": null,
+    "sitemap": null,
+    "category": "unknown"
+  },
+  {
+    "name": "templates",
+    "path": "src/templates",
+    "type": "folder",
+    "ext": null,
+    "size": null,
+    "title": null,
+    "sitemap": null,
+    "category": null
+  },
+  {
+    "name": "base.jsx",
+    "path": "src/templates/base.jsx",
+    "type": "file",
+    "ext": ".jsx",
+    "size": 1816,
     "title": null,
     "sitemap": null,
     "category": "unknown"
