@@ -1,15 +1,15 @@
 // ----------------------------------------------------
 // EmployeeDashboard.jsx
-// Employee view: Profile card + Leave Request card.
-// Uses Card, FormField, Button, Section.
+// Profile card + Leave Request card
+// Uses Section, Card, FormField, Button
 // ----------------------------------------------------
 
 import React, { useState } from "react";
 
+import Section from "../components/Section.jsx";
 import Card from "../components/Card.jsx";
 import FormField from "../components/FormField.jsx";
 import Button from "../components/Button.jsx";
-import Section from "../components/Section.jsx";
 
 function EmployeeDashboard() {
 
@@ -24,14 +24,13 @@ function EmployeeDashboard() {
   const [reason, setReason] = useState("");
 
   return (
-    <Section title="Employee Dashboard" className="section-steel">
+    <Section title="Employee Dashboard" className="section-graphite">
 
-      {/* Grid: Profile (left) + Leave Request (right) */}
       <div className="row g-4">
 
-        {/* Profile Card */}
+        {/* --- Profile Card --- */}
         <div className="col-md-6">
-          <Card title="My Profile">
+          <Card title="My Profile" className="section-panel">
 
             <FormField
               label="Name"
@@ -59,9 +58,9 @@ function EmployeeDashboard() {
           </Card>
         </div>
 
-        {/* Leave Request Card */}
+        {/* --- Leave Request Card --- */}
         <div className="col-md-6">
-          <Card title="Submit Leave Request">
+          <Card title="Submit Leave Request" className="section-panel">
 
             <FormField
               label="Start Date"
