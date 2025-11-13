@@ -1,43 +1,44 @@
-// ----------------------------------------------------
-// Component: [ComponentName].jsx
-// Description:
-// This file defines a reusable React component for the HR Portal Front-End.
-// Each component follows JASYTI coding conventions:
-// - React functional syntax (no class components)
-// - Bootstrap 5 utility classes for layout and style
-// - Paragraph-style comments explaining purpose and logic
-// - Exports at bottom for consistent structure
-// ----------------------------------------------------
-
-// Import core React dependencies
 import React from "react";
-
-// Import Bootstrap (if needed for isolated components)
-// Note: main.jsx already includes Bootstrap globally.
-// Import only if this component is used standalone outside Layout.
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
-// Optional: Import shared utilities or components (uncomment when used)
-// import { ActionButton } from "../components/ActionButton.jsx";
-// import { CardContainer } from "../components/CardContainer.jsx";
-
-// ----------------------------------------------------
-// Functional Component Definition
-// ----------------------------------------------------
-
-// Paragraph: Describe what the component does in one or two sentences.
-// Example: The Navbar component provides global site navigation visible on all pages.
-function ComponentName() {
+function Login() {
   return (
-    <div className="container text-center mt-5">
-      {/* Replace with actual JSX for this component */}
-      <p className="text-muted">[ComponentName] placeholder rendered successfully.</p>
+    <div className="container mt-5 d-flex justify-content-center">
+      <div className="border rounded p-4 shadow-sm bg-light" style={{ width: "400px" }}>
+        <h2 className="text-center mb-4">Login</h2>
+
+        <form>
+          <div className="mb-3 text-start">
+            <label htmlFor="username" className="form-label">Username</label>
+            <input type="text" id="username" className="form-control" placeholder="Enter username" />
+          </div>
+
+          <div className="mb-3 text-start">
+            <label htmlFor="password" className="form-label">Password</label>
+            <input type="password" id="password" className="form-control" placeholder="Enter password" />
+          </div>
+
+          <div className="mb-3 text-start">
+            <label className="form-label">Role:</label><br />
+            <div className="form-check form-check-inline">
+              <input className="form-check-input" type="radio" name="role" id="employee" value="employee" defaultChecked />
+              <label className="form-check-label" htmlFor="employee">Employee</label>
+            </div>
+            <div className="form-check form-check-inline">
+              <input className="form-check-input" type="radio" name="role" id="hr" value="hr" />
+              <label className="form-check-label" htmlFor="hr">HR</label>
+            </div>
+          </div>
+
+          <div className="d-grid gap-2">
+            <button type="submit" className="btn btn-primary">Login</button>
+            <button type="button" className="btn btn-link">SignUp</button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 }
 
-// ----------------------------------------------------
-// Export Component
-// ----------------------------------------------------
-export default ComponentName;
+export default Login;
