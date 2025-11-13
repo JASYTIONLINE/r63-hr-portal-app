@@ -1,0 +1,38 @@
+/* ----------------------------------------------------
+   color.css
+   Primary theme colors extracted from the screenshot.
+   Designed for strong contrast (CRAP principle).
+-----------------------------------------------------*/
+
+:root {
+  /* Neutral Base – metallic frame */
+  --color-steel: #4A4F55;
+
+  /* Dark Contrast – inner wells, text backgrounds */
+  --color-graphite: #1A1C1F;
+
+  /* Primary Accent – titles, CTAs, highlight trims */
+  --color-hazard: #E9C357;
+
+  /* Secondary Accent – warnings, indicators, emphasis */
+  --color-emergency: #C54139;
+
+  /* Supporting colors (generated to flesh out theme) */
+  --color-steel-light: #6B7077;   /* softer metal */
+  --color-steel-dark: #2F3439;    /* deep metal */
+  --color-hazard-dark: #B99732;   /* gold-muted */
+  --color-emergency-light: #E15B52; /* glowing red */
+  --color-text-light: #F2F2F2;
+  --color-text-muted: #B5B8BA;
+}
+
+/* Example utility classes */
+.bg-steel          { background-color: var(--color-steel) !important; }
+.bg-graphite       { background-color: var(--color-graphite) !important; }
+.bg-hazard         { background-color: var(--color-hazard) !important; }
+.bg-emergency      { background-color: var(--color-emergency) !important; }
+
+.text-steel        { color: var(--color-steel) !important; }
+.text-graphite     { color: var(--color-graphite) !important; }
+.text-hazard       { color: var(--color-hazard) !important; }
+.text-emergency    { color: var(--color-emergency) !important; }
