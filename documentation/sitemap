@@ -1,0 +1,33 @@
+src/
+│
+├── App.jsx
+├── main.jsx
+├── routes/
+│   └── router.jsx
+│
+├── layout/
+│   ├── Layout.jsx        ← shared page frame
+│   ├── Navbar.jsx
+│   ├── Hero.jsx
+│   └── Footer.jsx
+│
+├── components/
+│   ├── Card.jsx          ← simple reusable card
+│   ├── Modal.jsx         ← simple reusable modal
+│   ├── Button.jsx        ← simple reusable button
+│   ├── FormField.jsx     ← simple reusable input row
+│   └── Section.jsx       ← generic content wrapper
+│
+├── theme/
+│   ├── colors.css        ← optional
+│   ├── spacing.css       ← optional
+│   └── overrides.css     ← optional
+│
+├── pages/
+│   ├── Home.jsx
+│   ├── Login.jsx
+│   ├── HRDashboard.jsx
+│   └── EmployeeDashboard.jsx
+│
+└── assets/
+    └── images/

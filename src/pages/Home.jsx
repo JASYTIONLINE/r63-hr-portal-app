@@ -1,43 +1,48 @@
 // ----------------------------------------------------
-// Component: [ComponentName].jsx
-// Description:
-// This file defines a reusable React component for the HR Portal Front-End.
-// Each component follows JASYTI coding conventions:
-// - React functional syntax (no class components)
-// - Bootstrap 5 utility classes for layout and style
-// - Paragraph-style comments explaining purpose and logic
-// - Exports at bottom for consistent structure
+// Home.jsx
+// Landing page with a single CTA card.
+// Uses Section, Card, Button. Fully themed.
 // ----------------------------------------------------
 
-// Import core React dependencies
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
-// Import Bootstrap (if needed for isolated components)
-// Note: main.jsx already includes Bootstrap globally.
-// Import only if this component is used standalone outside Layout.
-import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/js/bootstrap.bundle.min.js";
+import Section from "../components/Section.jsx";
+import Card from "../components/Card.jsx";
+import Button from "../components/Button.jsx";
 
-// Optional: Import shared utilities or components (uncomment when used)
-// import { ActionButton } from "../components/ActionButton.jsx";
-// import { CardContainer } from "../components/CardContainer.jsx";
+function Home() {
+  const navigate = useNavigate();
 
-// ----------------------------------------------------
-// Functional Component Definition
-// ----------------------------------------------------
-
-// Paragraph: Describe what the component does in one or two sentences.
-// Example: The Navbar component provides global site navigation visible on all pages.
-function ComponentName() {
   return (
-    <div className="container text-center mt-5">
-      {/* Replace with actual JSX for this component */}
-      <p className="text-muted">[ComponentName] placeholder rendered successfully.</p>
-    </div>
+    <Section className="section-graphite">
+
+      <div className="d-flex justify-content-center">
+        <Card
+          title="Welcome to the HR Portal"
+          className="section-panel"
+          style={{ maxWidth: "500px", width: "100%" }}
+        >
+          <p className="mb-4">
+            Manage employee information, submit leave requests, and access your
+            personal dashboard quickly and securely.
+          </p>
+
+          <Button
+            className="w-100"
+            variant="primary"
+            onClick={() => {
+              console.log("Home: Enter Portal clicked");
+              navigate("/login");
+            }}
+          >
+            Enter Portal
+          </Button>
+        </Card>
+      </div>
+
+    </Section>
   );
 }
 
-// ----------------------------------------------------
-// Export Component
-// ----------------------------------------------------
-export default ComponentName;
+export default Home;

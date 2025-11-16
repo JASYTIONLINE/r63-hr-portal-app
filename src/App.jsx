@@ -1,20 +1,24 @@
-// App.jsx
 // ----------------------------------------------------
-// This is your root React component.
-// It returns a simple <h1>Hello World</h1> element,
-// which will be rendered inside the root <div> in index.html.
+// Component: App.jsx
+// Description:
+// Root application component. Hosts the global layout
+// and the router. No page logic, no login logic, no UI.
 // ----------------------------------------------------
 
 import React from "react";
+import { RouterProvider } from "react-router-dom";
+import router from "./routes/router.jsx";
 
-// Functional component syntax — modern React best practice
+// ----------------------------------------------------
+// Functional Component Definition
+// ----------------------------------------------------
 function App() {
   return (
-    <div>
-      <h1>Coming Soon</h1>
-    </div>
+    <RouterProvider router={router} />
   );
 }
 
-// Export it so index.js can import and render it
+// ----------------------------------------------------
+// Export Component
+// ----------------------------------------------------
 export default App;
