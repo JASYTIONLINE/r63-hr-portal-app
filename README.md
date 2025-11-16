@@ -1,160 +1,187 @@
-# HR Portal Front-End Application – Technical Documentation
+# HR Portal – React + Vite + Bootstrap
 
-## 🧭 Overview
-A responsive Human Resources management portal built with **React 19** and **Vite 7**, demonstrating professional front-end development practices using **Bootstrap 5** and **Firebase Realtime Database**.
-
-This project is the final Capstone for the Full Stack Development (Front-End with React) module. It applies modern React architecture patterns including component-based design, persistent layouts, and dynamic content rendering.
-
----
-
-## ⚙️ Technology Stack
-| Category | Tools / Libraries | Purpose |
-|-----------|-------------------|----------|
-| Core Framework | React 19 (Vite 7) | Fast, modular front-end application |
-| UI & Styling | Bootstrap 5 | Layout, spacing, and responsiveness |
-| Routing | React Router v7 | Multi-page navigation within SPA |
-| Database | Firebase Realtime Database | Live JSON API for CRUD simulation |
-| Version Control | Git + GitHub | Code management and documentation |
+![React](https://img.shields.io/badge/React-19-blue)
+![Vite](https://img.shields.io/badge/Vite-7-purple)
+![Bootstrap](https://img.shields.io/badge/Bootstrap-5.3-blueviolet)
+![Firebase](https://img.shields.io/badge/Firebase-Realtime%20DB-orange)
+![License](https://img.shields.io/badge/License-MIT-green)
+![Deploy](https://img.shields.io/badge/Deployed-Vercel-black)
 
 ---
 
-## 🧱 Architecture Summary
-The application follows a **layout-content architecture** where persistent elements remain constant (Navbar, Hero, Footer) and only the central content changes per route.
+## 🚀 Overview
 
-```
-<Layout>
- ├── <Navbar />
- ├── <Hero />
- ├── [Outlet → Dynamic Page Content]
- └── <Footer />
-</Layout>
-```
+The **HR Portal Front-End** is a fully modular, reskinnable application built with **React 19**, **Vite 7**, **Bootstrap 5**, and a custom **theme system**.  
+It features employee and HR dashboards, modal-driven workflows, search/filtering, role-based access simulation, and a clean reusable component library.
 
-### Folder Structure
+This project follows a universal layout model (Navbar → Hero → Outlet → Footer), supports client-side routing, and uses console logging to simulate data operations without a backend.
+
+---
+
+## 📦 Features
+
+### 👤 Employee Features
+- Update profile (name, dept, email)
+- Submit leave requests
+- Fully responsive dashboard
+- Themed UI components
+
+### 👩‍💼 HR Features
+- Add new employees (modal)
+- Edit employee records
+- Delete employees (confirmation modal)
+- Search/filter employee table
+- Approve or deny leave requests
+- Role-based access (via localStorage)
+
+### 🧩 System Features
+- Modular component library (Card, Button, Modal, Section, FormField)
+- Route protection (HR only)
+- Console-logged workflows for debugging
+- Theme folder for easy reskinning
+- Deployment templates for any hosting provider
+- Works fully client-side (no backend required)
+
+---
+
+## 🗂 Folder Structure
+
 ```
 src/
-├── App.jsx              # Root router host
-├── main.jsx             # React entry point
-├── layout/              # Global Layout (Navbar, Hero, Footer wrapper)
-├── components/          # Reusable UI elements
-├── pages/               # Page content (Home, Login, Employee, HR)
-├── routes/              # Router configuration
-├── firebase.js          # Firebase Realtime DB setup
-└── assets/              # Static files (logos, icons, etc.)
+│
+├── App.jsx
+├── main.jsx
+│
+├── components/
+│   ├── Button.jsx
+│   ├── Card.jsx
+│   ├── FormField.jsx
+│   ├── Modal.jsx
+│   └── Section.jsx
+│
+├── layout/
+│   ├── Footer.jsx
+│   ├── Hero.jsx
+│   ├── Layout.jsx
+│   └── Navbar.jsx
+│
+├── pages/
+│   ├── EmployeeDashboard.jsx
+│   ├── Home.jsx
+│   ├── HRDashboard.jsx
+│   └── Login.jsx
+│
+├── routes/
+│   └── router.jsx
+│
+├── theme/
+│   ├── color.css
+│   ├── index.css
+│   ├── overrides.css
+│   ├── spacing.css
+│   └── sections.css
+│
+└── assets/
+    └── images/
 ```
 
 ---
 
-## 📋 Functional Objectives
-### Employees
-- Register and edit personal information
-- Submit leave requests
-- View leave status in real time
+## 🛠 Tech Stack
 
-### HR Users
-- View all employees and leave requests
-- Approve or deny pending leave requests
-- Edit employee data where needed
-
----
-
-## 🧩 Core Components
-| Component | Purpose |
-|------------|----------|
-| **Navbar.jsx** | Site navigation with route links |
-| **Hero.jsx** | Page banner with title and tagline |
-| **Footer.jsx** | Persistent footer across all pages |
-| **Layout.jsx** | Wraps global structure and `<Outlet />` region |
-| **ActionButton.jsx** | Reusable call-to-action button |
-| **CardContainer.jsx** | Generic Bootstrap card for content grouping |
+| Layer | Technology |
+|-------|-------------|
+| Front-End | React 19 (Vite 7) |
+| Routing | React Router 7 |
+| UI Framework | Bootstrap 5 |
+| Theming | Custom CSS Theme System |
+| Deployment | Vercel |
+| Tools | Node.js, npm |
 
 ---
 
-## 📑 Pages
-| Page | Route | Purpose |
-|------|--------|----------|
-| **Home.jsx** | `/` | Displays charter summary and entry button |
-| **Login.jsx** | `/login` | Simulated login form with role lookup |
-| **EmployeeDashboard.jsx** | `/employee` | Profile + leave request form |
-| **HRDashboard.jsx** | `/hr` | Employee list and approval interface |
+## 🔐 Role-Based Access Logic
+
+This project simulates authentication using:
+
+- A login form
+- Radio-button role selection (employee / hr)
+- `localStorage.setItem("role", role)`
+- Page-level guards in HRDashboard
+- Route fallback via Vercel rewrite rules
+
+No password or backend validation is needed for this Capstone.
 
 ---
 
-## 🔄 Firebase Configuration
-The Firebase Realtime Database acts as a lightweight live JSON endpoint.
+## 🧪 Running Locally
 
-### `.env` example
+### Install dependencies:
 ```
-VITE_FIREBASE_API_KEY=your_api_key
-VITE_FIREBASE_AUTH_DOMAIN=fs-hr-portal-db.firebaseapp.com
-VITE_FIREBASE_DATABASE_URL=https://fs-hr-portal-db-default-rtdb.firebaseio.com
-VITE_FIREBASE_PROJECT_ID=fs-hr-portal-db
+npm install
 ```
 
-### firebase.js
+### Start dev server:
 ```
-import { initializeApp } from "firebase/app";
-import { getDatabase } from "firebase/database";
+npm run dev
+```
 
-const firebaseConfig = {
-  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
-  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
-  databaseURL: import.meta.env.VITE_FIREBASE_DATABASE_URL,
-  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
-};
-
-const app = initializeApp(firebaseConfig);
-export const db = getDatabase(app);
+### Build for production:
+```
+npm run build
 ```
 
 ---
 
-## 🧪 Development Workflow
-| Step | Command | Description |
-|------|----------|-------------|
-| 1 | `npm install` | Install dependencies |
-| 2 | `npm run dev` | Start Vite development server |
-| 3 | `npm run build` | Create production build |
-| 4 | `npm run preview` | Preview built app locally |
+## 🌐 Deployment Notes
+
+For React Router to work on Vercel, include:
+
+```
+vercel.json
+```
+
+```json
+{
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/" }
+  ]
+}
+```
+
+See `/deployment-templates` folder for configs for **Netlify**, **Firebase**, **Apache**, **Nginx**, **GH Pages**, **CloudFront**, and more.
 
 ---
 
-## 🧭 Work Breakdown Structure (WBS Reference)
-**Phase Summary:**
-1. Project Initialization
-2. Design & Wireframing
-3. Component Architecture
-4. Page Content Development
-5. Routing & Navigation
-6. Firebase Integration
-7. UI Design & Styling
-8. Documentation & Version Control
-9. Testing & Presentation
+## 🎨 Theme System
 
-Full detailed WBS is documented in `Capstone FSD Front End with React.md` under `/docs/`.
+Theme colors (from color.css):
 
----
+```
+--color-steel: #4A4F55;
+--color-graphite: #1A1C1F;
+--color-hazard: #E9C357;
+--color-emergency: #C54139;
+--color-text-light: #F2F2F2;
+```
 
-## 📘 Documentation Standards
-- Exports at bottom of all component files.
-- Paragraph-style inline comments explaining purpose and rationale.
-- Semantic naming and clear folder organization.
-- Commit messages use the format: `type(scope): description` (e.g., `feat(layout): add reusable footer`).
+The app can be completely reskinned by editing only files in:
+
+```
+src/theme/
+```
 
 ---
 
-## ✅ Validation Checklist
-| Area | Criteria |
-|-------|-----------|
-| Environment | Firebase and Vite run without warnings |
-| Layout | Navbar, Hero, Footer consistent across pages |
-| Content | Page-specific content renders via `<Outlet />` |
-| Responsiveness | Tested on desktop and mobile breakpoints |
-| Data Flow | CRUD operations functional with Firebase |
-| Documentation | All components commented and exported correctly |
+## 📸 Screenshots (Optional)
+_Add screenshots of each page here for grading or portfolio use._
 
 ---
 
 ## 📄 License
-Educational / Demonstration Use Only.  
-© 2025 JASYTI – Full Stack Development Program.
+MIT License — free to use, modify, distribute.
+
+---
+
+## ✨ Author
+Developed by **JASYTI** as part of the **Full Stack Development with Generative AI** Capstone Project.
