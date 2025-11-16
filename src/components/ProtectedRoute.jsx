@@ -1,4 +1,4 @@
-c// ============================================================================
+// ============================================================================
 // ProtectedRoute.jsx
 // ============================================================================
 //
@@ -28,28 +28,109 @@ c// ============================================================================
 //
 // ============================================================================
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Navigate } from "react-router-dom";
 import { getUserRole } from "../utils/authHelper";
 
 function ProtectedRoute({ children, requiredRole }) {
-  // Determine the current user's role. In Phase 1 this comes from localStorage.
-  // In Phase 2 it will come from Firebase via the same helper, unchanged here.
-  const currentRole = getUserRole();
+  // ========================================================================
+  // REACTIVE ROLE CHECKING
+  // ========================================================================
+  // We use useState to store the current role and useEffect to keep it
+  // synchronized with localStorage. This ensures the component re-renders
+  // when authentication state changes, even if the route doesn't change.
+  //
+  // Why useState + useEffect instead of just calling getUserRole() directly?
+  // - Makes the component reactive to localStorage changes
+  // - Ensures fresh checks on every route navigation
+  // - Prepares for Phase 2 where we'll listen to Firebase Auth state changes
+  // ========================================================================
+  const [currentRole, setCurrentRole] = useState(getUserRole());
 
-  // Not authenticated: send to login. 'replace' avoids polluting history so
-  // the Back button won't loop the user through protected pages.
-  if (!currentRole) {
+  // Update role state whenever the component mounts or when localStorage changes
+  useEffect(() => {
+    // Check role on mount and whenever route changes
+    const role = getUserRole();
+    setCurrentRole(role);
+
+    // Listen for storage events (cross-tab) and custom events (same-tab)
+    const handleStorageChange = () => {
+      const newRole = getUserRole();
+      setCurrentRole(newRole);
+    };
+
+    window.addEventListener("storage", handleStorageChange);
+    window.addEventListener("loginStateChange", handleStorageChange);
+
+    // Cleanup listeners on unmount
+    return () => {
+      window.removeEventListener("storage", handleStorageChange);
+      window.removeEventListener("loginStateChange", handleStorageChange);
+    };
+  }, []); // Empty dependency array means this runs once on mount
+
+  // ========================================================================
+  // ALWAYS CHECK LATEST ROLE ON RENDER
+  // ========================================================================
+  // We check localStorage directly on every render to ensure we have the
+  // absolute latest value. This is critical because:
+  // 1. React Router might reuse component instances between route changes
+  // 2. localStorage can change outside of React's state management
+  // 3. We need immediate protection, not delayed state updates
+  //
+  // We use this direct check for the actual protection logic, while useState
+  // helps with reactivity to events.
+  // ========================================================================
+  const roleToCheck = getUserRole();
+
+  // Debug logging to help diagnose route protection issues
+  console.log("ProtectedRoute check:", {
+    currentRole,
+    roleToCheck,
+    requiredRole,
+    isAuthenticated: roleToCheck !== null,
+    roleMatches: roleToCheck === requiredRole
+  });
+
+  // ========================================================================
+  // UNAUTHENTICATED USER
+  // ========================================================================
+  // If no role is stored in localStorage, the user is not logged in.
+  // Redirect them to the login page immediately.
+  //
+  // The 'replace' prop prevents adding this redirect to browser history,
+  // so the Back button won't take users back to the protected page they
+  // tried to access.
+  // ========================================================================
+  if (!roleToCheck) {
+    console.log("ProtectedRoute: User not authenticated, redirecting to /login");
     return <Navigate to="/login" replace />;
   }
 
-  // Authenticated but wrong role: also redirect to login. For an enterprise
-  // app, this might go to a dedicated "Access Denied" page.
-  if (requiredRole && currentRole !== requiredRole) {
+  // ========================================================================
+  // WRONG ROLE
+  // ========================================================================
+  // If the user is logged in but doesn't have the required role for this
+  // route, redirect them to login. This prevents employees from accessing
+  // HR-only routes and vice versa.
+  //
+  // For example: An employee trying to access /hr will be redirected because
+  // their role ("employee") doesn't match the requiredRole ("hr").
+  // ========================================================================
+  if (requiredRole && roleToCheck !== requiredRole) {
+    console.log(
+      `ProtectedRoute: User role "${roleToCheck}" doesn't match required "${requiredRole}", redirecting to /login`
+    );
     return <Navigate to="/login" replace />;
   }
 
-  // Authorized: render the protected content.
+  // ========================================================================
+  // AUTHORIZED USER
+  // ========================================================================
+  // The user is authenticated and has the correct role. Render the protected
+  // content (the child component passed to ProtectedRoute).
+  // ========================================================================
+  console.log("ProtectedRoute: User authorized, rendering protected content");
   return children;
 }
 
