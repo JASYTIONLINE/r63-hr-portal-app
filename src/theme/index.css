@@ -1,0 +1,211 @@
+/* ----------------------------------------------------
+   index.css
+   Global styling using your 4-color theme:
+   Steel (#4A4F55), Graphite (#1A1C1F),
+   Hazard Yellow (#E9C357), Emergency Red (#C54139)
+-----------------------------------------------------*/
+
+/* === CSS RESET === */
+* {
+  box-sizing: border-box;
+}
+
+body, h1, h2, h3, h4, h5, h6, p {
+  margin: 0;
+  padding: 0;
+}
+
+/* === GLOBAL BODY STYLE === */
+body {
+  background-color: var(--color-graphite);   /* deep contrast base */
+  color: var(--color-text-light);            /* readable on dark */
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  line-height: 1.6;
+}
+
+/* -----------------------------------------
+   GLOBAL TYPOGRAPHY
+------------------------------------------*/
+
+h1, h2, h3, h4 {
+  color: var(--color-hazard);                /* strong title contrast */
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+p {
+  color: var(--color-text-light);
+}
+
+.small-text {
+  color: var(--color-text-muted);
+}
+
+/* -----------------------------------------
+   LINKS
+------------------------------------------*/
+
+a {
+  color: var(--color-hazard);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--color-emergency-light);
+  text-decoration: underline;
+}
+
+/* -----------------------------------------
+   LAYOUT UTILITIES
+------------------------------------------*/
+
+.page-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-spacing {
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+}
+
+/* -----------------------------------------
+   COMPONENT UTILITIES
+------------------------------------------*/
+
+.bg-steel {
+  background-color: var(--color-steel) !important;
+}
+
+.bg-graphite {
+  background-color: var(--color-graphite) !important;
+}
+
+.bg-hazard {
+  background-color: var(--color-hazard) !important;
+}
+
+.bg-emergency {
+  background-color: var(--color-emergency) !important;
+}
+
+.text-hazard {
+  color: var(--color-hazard) !important;
+}
+
+.text-emergency {
+  color: var(--color-emergency) !important;
+}
+
+/* -----------------------------------------
+   CARD & PANEL STYLING
+   (Bootstrap cards now match your theme)
+------------------------------------------*/
+
+.card {
+  background-color: var(--color-steel-dark);
+  border: 1px solid var(--color-steel);
+  color: var(--color-text-light);
+  border-radius: 6px;
+}
+
+.card-title, .card h4 {
+  color: var(--color-hazard);
+}
+
+.card:hover {
+  border-color: var(--color-hazard);
+  transition: 0.2s ease;
+}
+
+/* -----------------------------------------
+   BUTTON OVERRIDES
+------------------------------------------*/
+
+.btn-primary {
+  background-color: var(--color-hazard);
+  border-color: var(--color-hazard-dark);
+  color: var(--color-graphite);
+  font-weight: 600;
+}
+
+.btn-primary:hover {
+  background-color: var(--color-hazard-dark);
+  border-color: var(--color-hazard);
+}
+
+.btn-danger {
+  background-color: var(--color-emergency);
+  border-color: var(--color-emergency-light);
+}
+
+.btn-danger:hover {
+  background-color: var(--color-emergency-light);
+}
+
+/* -----------------------------------------
+   HERO SECTION
+------------------------------------------*/
+
+.hero {
+  background-color: var(--color-steel);
+  color: var(--color-text-light);
+  padding: 3rem 0;
+  border-bottom: 4px solid var(--color-hazard);
+}
+
+/* -----------------------------------------
+   NAVBAR RESKIN
+------------------------------------------*/
+
+.navbar-dark {
+  background-color: var(--color-steel-dark) !important;
+  border-bottom: 3px solid var(--color-hazard);
+}
+
+.navbar-dark .navbar-brand {
+  color: var(--color-hazard);
+  font-weight: 700;
+}
+
+.navbar-dark .nav-link {
+  color: var(--color-text-light) !important;
+}
+
+.navbar-dark .nav-link:hover {
+  color: var(--color-hazard) !important;
+}
+
+/* -----------------------------------------
+   FOOTER
+------------------------------------------*/
+
+.footer {
+  background-color: var(--color-steel-dark);
+  color: var(--color-text-muted);
+  padding: 1rem 0;
+  text-align: center;
+  border-top: 3px solid var(--color-hazard);
+}
+
+/* -----------------------------------------
+   SCROLLBAR (MATCHES THEME)
+------------------------------------------*/
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-steel-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-hazard-dark);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-hazard);
+}

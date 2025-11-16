@@ -1,0 +1,107 @@
+/* ----------------------------------------------------
+   sections.css
+   Themed styling for content sections.
+   Works alongside Bootstrap and your palette.
+   Safe for responsiveness and reuse.
+-----------------------------------------------------*/
+
+/* === Base section spacing === */
+.section {
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+}
+
+/* Optional tighter spacing */
+.section-sm {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+/* Optional larger spacing */
+.section-lg {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+
+/* === Background variants (theme colors) === */
+
+.section-steel {
+  background-color: var(--color-steel);
+  color: var(--color-text-light);
+}
+
+.section-graphite {
+  background-color: var(--color-graphite);
+  color: var(--color-text-light);
+}
+
+.section-hazard {
+  background-color: var(--color-hazard);
+  color: var(--color-graphite);
+}
+
+.section-emergency {
+  background-color: var(--color-emergency);
+  color: var(--color-text-light);
+}
+
+
+/* === Section with accent border === */
+
+.section-accent-top {
+  border-top: 4px solid var(--color-hazard);
+}
+
+.section-accent-bottom {
+  border-bottom: 4px solid var(--color-hazard);
+}
+
+
+/* === Text styles inside sections === */
+
+.section-title {
+  color: var(--color-hazard);
+  font-weight: 700;
+  margin-bottom: 1rem;
+  letter-spacing: 0.5px;
+}
+
+.section-subtitle {
+  color: var(--color-text-muted);
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+}
+
+
+/* === Section card grid spacing === */
+
+.section-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .section-grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .section-grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+
+/* === Optional panel style (metallic inspired) === */
+
+.section-panel {
+  background-color: var(--color-steel-dark);
+  padding: 2rem;
+  border-radius: 6px;
+  border: 1px solid var(--color-steel);
+}
+
+.section-panel:hover {
+  border-color: var(--color-hazard);
+  transition: 0.2s ease;
+}

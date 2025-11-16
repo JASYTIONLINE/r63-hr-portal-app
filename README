@@ -1,0 +1,133 @@
+# HR Portal Front-End (React + Bootstrap + Modular Theme System)
+
+A modular, reskinnable front-end HR management interface built with React, React Router, Bootstrap, and a custom theme architecture. Features include employee management, leave request handling, responsive layout, reusable UI components, and a full theme layer for rapid rebranding.
+
+---
+
+## 📁 Project Structure
+
+```
+src/
+│
+├── App.jsx
+├── main.jsx
+│
+├── components/
+│   ├── Button.jsx
+│   ├── Card.jsx
+│   ├── FormField.jsx
+│   ├── Modal.jsx
+│   └── Section.jsx
+│
+├── layout/
+│   ├── Footer.jsx
+│   ├── Hero.jsx
+│   ├── Layout.jsx
+│   └── Navbar.jsx
+│
+├── pages/
+│   ├── EmployeeDashboard.jsx
+│   ├── Home.jsx
+│   ├── HRDashboard.jsx
+│   └── Login.jsx
+│
+├── routes/
+│   └── router.jsx
+│
+├── theme/
+│   ├── color.css
+│   ├── index.css
+│   ├── overrides.css
+│   ├── spacing.css
+│   └── sections.css
+│
+└── assets/
+    └── images/
+```
+
+---
+
+## 🧩 Features
+
+### HR Dashboard
+- Add employees (modal)
+- Edit employees (modal)
+- Delete employees (confirmation modal)
+- Search/filter employees
+- Review leave requests
+- Approve / Deny leave
+- Fully responsive tables
+- Themed steel/graphite/hazard palette
+
+### Employee Dashboard
+- Update profile information
+- Submit leave requests
+- Modular form fields
+- Themed card panels
+
+---
+
+## 🖥️ Tech Stack
+
+| Layer | Technology |
+|-------|-------------|
+| Front-End | React 19 (Vite) |
+| Styling | Bootstrap 5 + Custom Theme |
+| Routing | React Router 7 |
+| Components | Fully modular React components |
+| Theming | Custom palette + CSS overrides |
+
+---
+
+## 🎨 Theme Palette (sci-fi industrial)
+
+| Name | Hex | Purpose |
+|------|------|---------|
+| Steel | `#4A4F55` | panels & surfaces |
+| Graphite | `#1A1C1F` | backgrounds, contrast |
+| Hazard Yellow | `#E9C357` | highlights, CTAs |
+| Emergency Red | `#C54139` | warnings, destructive actions |
+
+---
+
+## 🔄 Reskinning
+To completely rebrand the site, update only:
+
+```
+theme/color.css
+theme/index.css
+theme/overrides.css
+theme/sections.css
+theme/spacing.css
+```
+
+No React components must be changed.
+
+---
+
+## 🚀 Running the Project
+
+### Install dependencies:
+```
+npm install
+```
+
+### Start dev server:
+```
+npm run dev
+```
+
+### Build for production:
+```
+npm run build
+```
+
+---
+
+## 🧭 Why This Architecture Works
+- Easy to maintain
+- Easy to rebrand
+- Easy to expand (new pages, dashboards, modals)
+- Reusable components for ANY future project
+- Clean separation of concerns
+- Fully responsive (Bootstrap grid)
