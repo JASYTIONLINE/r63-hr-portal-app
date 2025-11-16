@@ -11,8 +11,8 @@
 // ROUTE PROTECTION:
 // This component is protected at the route level in router.jsx using
 // ProtectedRoute with requiredRole="employee". This ensures:
-// 1. Only authenticated employees can access this dashboard
-// 2. HR users are redirected if they try to access /employee
+// 1. Only authenticated employees can access this dashboard.
+// 2. HR users are also employees and have access to their employee dashboard (see router.jsx)
 // 3. Unauthenticated users are redirected to login
 //
 // This protection happens before the component renders, so there's no flash
