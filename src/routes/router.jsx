@@ -13,8 +13,7 @@ import EmployeeDashboard from "../pages/EmployeeDashboard.jsx";
 import HRDashboard from "../pages/HRDashboard.jsx";
 
 const router = createBrowserRouter([
-  
-  {
+    {
     path: "/",
     element: <Layout />,
     children: [

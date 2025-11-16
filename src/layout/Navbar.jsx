@@ -92,13 +92,13 @@ function Navbar() {
   // ========================================================================
   const handleLogout = (e) => {
     e.preventDefault();
-    
+
     // Clear authentication state from localStorage
     localStorage.removeItem("role");
-    
+
     // Update UI state immediately
     setLoggedIn(false);
-    
+
     // Redirect to login page
     navigate("/login");
   };
@@ -145,18 +145,17 @@ function Navbar() {
                 <Link className="nav-link" to="/login">Login</Link>
               </li>
             )}
-
-            <li className="nav-item">
-              <Link className="nav-link" to="/employee">
-                Employee Dashboard
-              </Link>
-            </li>
-
-            <li className="nav-item">
-              <Link className="nav-link" to="/hr">
-                HR Dashboard
-              </Link>
-            </li>
+            
+            {loggedIn && (
+              <>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/employee">Employee Dashboard</Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/hr">HR Dashboard</Link>
+                </li>
+              </>
+            )}
 
           </ul>
         </div>
