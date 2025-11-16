@@ -160,6 +160,20 @@ function Login() {
     localStorage.setItem("role", role);
     console.log("Role saved to localStorage:", role);
 
+    // ====================================================================
+    // NOTIFY NAVBAR OF LOGIN STATE CHANGE
+    // ====================================================================
+    // Dispatch a custom event to notify the Navbar component that the
+    // authentication state has changed. This allows the Navbar to update
+    // from "Login" to "Logout" immediately after login, without requiring
+    // a page refresh or navigation.
+    //
+    // The Navbar listens for this event and updates its state accordingly.
+    // This provides a reactive UI that reflects authentication changes
+    // across the application.
+    // ====================================================================
+    window.dispatchEvent(new Event("loginStateChange"));
+
     console.log("---- navigating now ----");
 
     // ====================================================================
