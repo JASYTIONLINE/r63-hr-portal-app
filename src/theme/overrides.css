@@ -78,7 +78,7 @@
 /* === FORM OVERRIDES === */
 
 .form-label {
-  color: var(--color-hazard);
+  color: var( --color-steel-dark);
 }
 
 .form-control {
