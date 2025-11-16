@@ -36,7 +36,7 @@ function Home() {
               navigate("/login");
             }}
           >
-            Enter Portal
+            Login
           </Button>
         </Card>
       </div>
