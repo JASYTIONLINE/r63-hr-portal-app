@@ -32,7 +32,7 @@
 
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { isAuthenticated } from "../utils/authHelper";
+import { isAuthenticated, getUserRole } from "../utils/authHelper";
 
 function Navbar() {
   const navigate = useNavigate();
@@ -146,14 +146,69 @@ function Navbar() {
               </li>
             )}
             
+            {/* ================================================================
+                DASHBOARD LINKS - ROLE-BASED VISIBILITY
+                ================================================================
+                These links are only shown to authenticated users. However, we
+                apply role-based visibility to ensure users only see links they
+                can actually access. This implements the Principle of Least
+                Privilege (PoLP) in the user interface.
+                
+                PRINCIPLE OF LEAST PRIVILEGE (PoLP):
+                The Principle of Least Privilege states that users should only
+                be given the minimum level of access (or visibility) necessary
+                to perform their tasks. In UI design, this means:
+                1. Only show navigation options users can actually use
+                2. Hide features/links that users don't have permission to access
+                3. Reduce cognitive load by not showing inaccessible options
+                4. Prevent confusion from clicking links that redirect to login
+                
+                IMPLEMENTATION:
+                - Employee Dashboard: Shown to all authenticated users (both
+                  employees and HR can access this route per router.jsx)
+                - HR Dashboard: Only shown to HR users (employees cannot access
+                  this route, so showing the link would be confusing and violate
+                  PoLP by exposing an option they can't use)
+                
+                WHY THIS MATTERS:
+                Without role-based visibility, employees would see the "HR
+                Dashboard" link, click it, and be immediately redirected to
+                login. This creates a poor user experience:
+                - Confusion: "Why can't I access this?"
+                - Frustration: Clicking links that don't work
+                - Security concern: Exposing the existence of protected routes
+                
+                With role-based visibility, the UI matches the actual permissions,
+                creating a more intuitive and professional user experience.
+                
+                TECHNICAL APPROACH:
+                We use getUserRole() directly (not state) because:
+                1. It's a simple check that doesn't need reactivity
+                2. The component re-renders on navigation anyway
+                3. It's consistent with the ProtectedRoute pattern
+                4. Avoids unnecessary state management overhead
+                
+                PHASE 2 MIGRATION:
+                When Firebase is integrated, getUserRole() will read from
+                Firebase instead of localStorage. This component will continue
+                to work without modification, demonstrating proper abstraction.
+                ================================================================ */}
             {loggedIn && (
               <>
+                {/* Employee Dashboard - accessible to all authenticated users */}
                 <li className="nav-item">
                   <Link className="nav-link" to="/employee">Employee Dashboard</Link>
                 </li>
-                <li className="nav-item">
-                  <Link className="nav-link" to="/hr">HR Dashboard</Link>
-                </li>
+                
+                {/* HR Dashboard - only show to HR users (Principle of Least Privilege) */}
+                {/* Regular employees cannot access this route, so we hide the link
+                    to prevent confusion and follow PoLP by only showing accessible
+                    navigation options. */}
+                {getUserRole() === "hr" && (
+                  <li className="nav-item">
+                    <Link className="nav-link" to="/hr">HR Dashboard</Link>
+                  </li>
+                )}
               </>
             )}
 

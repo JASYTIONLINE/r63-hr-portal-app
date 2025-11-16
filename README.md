@@ -112,6 +112,81 @@ This project simulates authentication using:
 
 No password or backend validation is needed for this Capstone.
 
+### Principle of Least Privilege (PoLP)
+
+This application implements the **Principle of Least Privilege** (PoLP) in both route protection and user interface design. PoLP is a fundamental security and UX principle that states users should only be given the minimum level of access (or visibility) necessary to perform their tasks.
+
+#### What is Principle of Least Privilege?
+
+The Principle of Least Privilege is a security concept that originated in computer security but applies equally well to user interface design. It means:
+
+1. **Users should only see what they can use**: Don't show navigation options, buttons, or features that users don't have permission to access
+2. **Minimize exposure**: Hide protected routes and features from unauthorized users
+3. **Reduce cognitive load**: Users shouldn't have to figure out which options they can actually use
+4. **Prevent confusion**: Avoid showing links that redirect users to login or error pages
+
+#### Implementation in This Application
+
+**Route-Level Protection:**
+- Routes are protected using `ProtectedRoute` components in `router.jsx`
+- Unauthorized users are redirected to `/login` before protected components render
+- This prevents unauthorized access at the routing level
+
+**UI-Level Protection (Navbar):**
+- The Navbar implements PoLP by conditionally showing dashboard links based on user role
+- **Employee Dashboard**: Shown to all authenticated users (both employees and HR can access)
+- **HR Dashboard**: Only shown to HR users (employees don't see this link)
+- This prevents employees from seeing navigation options they can't use
+
+**Why This Matters:**
+
+**Without PoLP (Bad UX):**
+```
+Employee logs in → Sees "HR Dashboard" link → Clicks it → Gets redirected to login
+Result: Confusion, frustration, poor user experience
+```
+
+**With PoLP (Good UX):**
+```
+Employee logs in → Only sees "Employee Dashboard" link → Can access it
+HR logs in → Sees both dashboard links → Can access both
+Result: Clear, intuitive, professional user experience
+```
+
+#### Academic Learning Objectives
+
+Implementing PoLP demonstrates understanding of:
+
+1. **Security Principles**: Applying security concepts to UI design
+2. **UX Best Practices**: Creating interfaces that match user permissions
+3. **Defense in Depth**: Multiple layers of protection (routes + UI)
+4. **User-Centered Design**: Designing interfaces that respect user roles
+5. **Professional Standards**: Following industry best practices for role-based applications
+
+#### Code Example
+
+The Navbar component (`src/layout/Navbar.jsx`) implements PoLP like this:
+
+```jsx
+{loggedIn && (
+  <>
+    {/* Shown to all authenticated users */}
+    <Link to="/employee">Employee Dashboard</Link>
+    
+    {/* Only shown to HR users - PoLP implementation */}
+    {getUserRole() === "hr" && (
+      <Link to="/hr">HR Dashboard</Link>
+    )}
+  </>
+)}
+```
+
+This ensures employees never see the HR Dashboard link, preventing confusion and following the Principle of Least Privilege.
+
+#### Phase 2 Considerations
+
+When Firebase Authentication is integrated in Phase 2, PoLP will continue to work the same way. The `getUserRole()` function will read from Firebase instead of localStorage, but the UI logic remains unchanged. This demonstrates proper abstraction - the UI layer doesn't need to know where role data comes from.
+
 ---
 
 ## 🧪 Running Locally
