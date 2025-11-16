@@ -135,19 +135,79 @@ npm run build
 
 ## 🌐 Deployment Notes
 
-For React Router to work on Vercel, include:
+### Vercel Configuration (`vercel.json`)
 
-```
-vercel.json
-```
+This project includes a comprehensive Vercel deployment configuration that explicitly defines the build process, output directory, and routing rules. This approach follows deployment best practices by making the build process transparent and maintainable.
+
+#### Purpose of `vercel.json`
+
+The `vercel.json` file configures how Vercel builds, deploys, and serves the application. While Vercel can auto-detect Vite projects, explicitly defining the configuration provides:
+
+1. **Clarity**: Anyone can see exactly how the application is built and deployed
+2. **Reliability**: Reduces dependency on auto-detection, which can fail or change
+3. **Maintainability**: Makes it easier to debug deployment issues
+4. **Documentation**: Serves as deployment documentation for the project
+5. **Control**: Allows customization of build settings if needed
+
+#### Configuration Breakdown
 
 ```json
 {
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "devCommand": "npm run dev",
+  "installCommand": "npm install",
+  "framework": "vite",
   "rewrites": [
-    { "source": "/(.*)", "destination": "/" }
+    { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
 ```
+
+**Property Explanations:**
+
+- **`buildCommand`**: The command Vercel runs to build the production version of the application. This executes `npm run build`, which runs Vite's build process (defined in `package.json`). Vite compiles React components, bundles assets, and optimizes the code for production.
+
+- **`outputDirectory`**: Specifies where Vercel should look for the built files after the build command completes. Vite outputs to the `dist` directory by default, so this tells Vercel where to find the production-ready files to serve.
+
+- **`devCommand`**: The command used for Vercel's preview deployments and development environments. This runs the Vite development server, which provides hot module replacement and fast refresh during development.
+
+- **`installCommand`**: The command Vercel runs to install project dependencies before building. This ensures all npm packages (React, Vite, Bootstrap, etc.) are installed in the deployment environment.
+
+- **`framework`**: Explicitly tells Vercel this is a Vite project. This enables framework-specific optimizations and ensures Vercel applies the correct build settings, caching strategies, and performance optimizations for Vite applications.
+
+- **`rewrites`**: Critical for Single Page Applications (SPAs) using client-side routing. This rule tells Vercel to serve `index.html` for all routes, allowing React Router to handle navigation on the client side. Without this, direct URL access (e.g., `/employee` or `/hr`) would result in 404 errors because Vercel would look for those files on the server, which don't exist in an SPA.
+
+#### Why Explicit Configuration Matters
+
+**Without explicit configuration:**
+- Vercel relies on auto-detection, which may fail or change
+- Build process is hidden, making debugging difficult
+- Less control over deployment settings
+- Harder for team members to understand deployment
+
+**With explicit configuration:**
+- Build process is transparent and documented
+- Easier to debug deployment issues
+- More control over build settings
+- Better for team collaboration and maintenance
+- Demonstrates understanding of deployment best practices
+
+#### Academic Learning Objectives
+
+This configuration demonstrates understanding of:
+
+1. **Deployment Best Practices**: Explicit configuration over implicit auto-detection
+2. **SPA Routing**: Understanding how client-side routing requires server-side rewrite rules
+3. **Build Processes**: Knowledge of how modern build tools (Vite) work and where output goes
+4. **Infrastructure as Code**: Configuration files that define deployment behavior
+5. **Documentation**: Making technical decisions explicit and understandable
+
+#### Phase 2 Considerations
+
+When Firebase is integrated in Phase 2, this configuration will remain largely unchanged. The build process stays the same - only the application code changes. The `rewrites` rule will continue to work correctly for React Router, and the build/output settings will remain valid.
+
+---
 
 See `/deployment-templates` folder for configs for **Netlify**, **Firebase**, **Apache**, **Nginx**, **GH Pages**, **CloudFront**, and more.
 
