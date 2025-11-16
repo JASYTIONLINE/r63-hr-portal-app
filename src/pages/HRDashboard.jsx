@@ -1,6 +1,5 @@
 // ----------------------------------------------------
-// // HRDashboard.jsx (Completed Version)
-// Adds: Employee Display Table (no edit/delete yet)
+// HRDashboard.jsx (Completed + Fully Instrumented)
 // ----------------------------------------------------
 
 import React, { useState } from "react";
@@ -13,30 +12,26 @@ import FormField from "../components/FormField.jsx";
 
 function HRDashboard() {
 
-  const [showModal, setShowModal] = useState(false);
+  console.log("HRDashboard rendered");
 
-  // New Employee Form State
+  const [showModal, setShowModal] = useState(false);
   const [name, setName] = useState("");
   const [department, setDepartment] = useState("");
   const [email, setEmail] = useState("");
 
-  // Edit Modal State
   const [showEditModal, setShowEditModal] = useState(false);
   const [editEmployee, setEditEmployee] = useState(null);
 
-  //search bar 
   const [search, setSearch] = useState("");
 
-  // Delete Modal State
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [employeeToDelete, setEmployeeToDelete] = useState(null);
 
-  // Employee Table Data (local state for now)
   const [employees, setEmployees] = useState([
     { id: 1, name: "John Doe", department: "IT", email: "john@corp.com" },
     { id: 2, name: "Sarah Smith", department: "Finance", email: "sarah@corp.com" }
   ]);
-  // Leave Requests (dummy data for now)
+
   const [leaveRequests, setLeaveRequests] = useState([
     {
       id: 1,
@@ -70,15 +65,21 @@ function HRDashboard() {
             Add new employees, update records, and manage HR processes.
           </p>
 
-          <Button className="w-100" onClick={() => setShowModal(true)}>
+          <Button
+            className="w-100"
+            onClick={() => {
+              console.log("HR: Add Employee clicked");
+              setShowModal(true);
+            }}
+          >
             Add New Employee
           </Button>
         </Card>
       </div>
 
       {/* ============================
-    Employee Table with Search
-============================ */}
+      Employee Table with Search
+      ============================ */}
       <Card title="Employee List" className="section-panel">
 
         {/* Search Bar */}
@@ -88,7 +89,10 @@ function HRDashboard() {
             className="form-control"
             placeholder="Search employees..."
             value={search}
-            onChange={(e) => setSearch(e.target.value)}
+            onChange={(e) => {
+              setSearch(e.target.value);
+              console.log("HR: Search typed:", e.target.value);
+            }}
           />
         </div>
 
@@ -101,7 +105,6 @@ function HRDashboard() {
                 <th>Department</th>
                 <th>Email</th>
                 <th>Actions</th>
-
               </tr>
             </thead>
 
@@ -120,11 +123,14 @@ function HRDashboard() {
                     <td>{emp.name}</td>
                     <td>{emp.department}</td>
                     <td>{emp.email}</td>
+
                     <td>
+                      {/* EDIT */}
                       <Button
                         variant="secondary"
                         className="btn-sm me-2"
                         onClick={() => {
+                          console.log("HR: Edit clicked:", emp);
                           setEditEmployee(emp);
                           setShowEditModal(true);
                         }}
@@ -132,10 +138,12 @@ function HRDashboard() {
                         Edit
                       </Button>
 
+                      {/* DELETE */}
                       <Button
                         variant="danger"
                         className="btn-sm"
                         onClick={() => {
+                          console.log("HR: Delete clicked:", emp);
                           setEmployeeToDelete(emp);
                           setShowDeleteModal(true);
                         }}
@@ -143,7 +151,6 @@ function HRDashboard() {
                         Delete
                       </Button>
                     </td>
-
 
                   </tr>
                 ))}
@@ -153,11 +160,11 @@ function HRDashboard() {
         </div>
 
       </Card>
-      {/* ============================
-    Leave Requests Table
-============================ */}
-      <Card title="Leave Requests" className="section-panel mt-5">
 
+      {/* ============================
+      Leave Requests Table
+      ============================ */}
+      <Card title="Leave Requests" className="section-panel mt-5">
         <div className="table-responsive">
           <table className="table table-dark table-striped table-hover">
 
@@ -179,6 +186,7 @@ function HRDashboard() {
                   <td>{req.start}</td>
                   <td>{req.end}</td>
                   <td>{req.reason}</td>
+
                   <td>
                     {req.status === "Approved" && (
                       <span className="text-hazard fw-bold">Approved</span>
@@ -192,29 +200,33 @@ function HRDashboard() {
                   </td>
 
                   <td>
+                    {/* APPROVE */}
                     <Button
                       className="btn-sm me-2"
-                      onClick={() =>
+                      onClick={() => {
+                        console.log("HR: Approve leave request:", req);
                         setLeaveRequests(leaveRequests.map(item =>
                           item.id === req.id
                             ? { ...item, status: "Approved" }
                             : item
-                        ))
-                      }
+                        ));
+                      }}
                     >
                       Approve
                     </Button>
 
+                    {/* DENY */}
                     <Button
                       variant="danger"
                       className="btn-sm"
-                      onClick={() =>
+                      onClick={() => {
+                        console.log("HR: Deny leave request:", req);
                         setLeaveRequests(leaveRequests.map(item =>
                           item.id === req.id
                             ? { ...item, status: "Denied" }
                             : item
-                        ))
-                      }
+                        ));
+                      }}
                     >
                       Deny
                     </Button>
@@ -225,7 +237,6 @@ function HRDashboard() {
 
           </table>
         </div>
-
       </Card>
 
 
@@ -233,25 +244,35 @@ function HRDashboard() {
       <Modal
         show={showModal}
         title="Add New Employee"
-        onClose={() => setShowModal(false)}
+        onClose={() => {
+          console.log("HR: Add modal closed");
+          setShowModal(false);
+        }}
         footer={
           <>
             <Button
               variant="secondary"
-              onClick={() => setShowModal(false)}
+              onClick={() => {
+                console.log("HR: Add modal canceled");
+                setShowModal(false);
+              }}
             >
               Close
             </Button>
 
             <Button
               onClick={() => {
+                console.log("HR: Save new employee");
                 const newEmp = {
                   id: Date.now(),
                   name,
                   department,
                   email,
                 };
+                console.log("HR: New employee data:", newEmp);
+
                 setEmployees([...employees, newEmp]);
+
                 setShowModal(false);
                 setName("");
                 setDepartment("");
@@ -266,40 +287,57 @@ function HRDashboard() {
         <FormField
           label="Name"
           value={name}
-          onChange={(e) => setName(e.target.value)}
+          onChange={(e) => {
+            setName(e.target.value);
+            console.log("HR: Add modal name typed:", e.target.value);
+          }}
         />
 
         <FormField
           label="Department"
           value={department}
-          onChange={(e) => setDepartment(e.target.value)}
+          onChange={(e) => {
+            setDepartment(e.target.value);
+            console.log("HR: Add modal department typed:", e.target.value);
+          }}
         />
 
         <FormField
           label="Email"
           type="email"
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={(e) => {
+            setEmail(e.target.value);
+            console.log("HR: Add modal email typed:", e.target.value);
+          }}
         />
       </Modal>
+
+
       {/* --- Edit Employee Modal --- */}
       <Modal
         show={showEditModal}
         title="Edit Employee"
-        onClose={() => setShowEditModal(false)}
+        onClose={() => {
+          console.log("HR: Edit modal closed");
+          setShowEditModal(false);
+        }}
         footer={
           <>
             <Button
               variant="secondary"
-              onClick={() => setShowEditModal(false)}
+              onClick={() => {
+                console.log("HR: Edit modal canceled");
+                setShowEditModal(false);
+              }}
             >
               Cancel
             </Button>
 
             <Button
               onClick={() => {
+                console.log("HR: Saving edited employee:", editEmployee);
 
-                // Save the changes
                 setEmployees(employees.map(emp =>
                   emp.id === editEmployee.id ? editEmployee : emp
                 ));
@@ -317,41 +355,51 @@ function HRDashboard() {
             <FormField
               label="Name"
               value={editEmployee.name}
-              onChange={(e) =>
-                setEditEmployee({ ...editEmployee, name: e.target.value })
-              }
+              onChange={(e) => {
+                console.log("HR: Edit name typed:", e.target.value);
+                setEditEmployee({ ...editEmployee, name: e.target.value });
+              }}
             />
 
             <FormField
               label="Department"
               value={editEmployee.department}
-              onChange={(e) =>
-                setEditEmployee({ ...editEmployee, department: e.target.value })
-              }
+              onChange={(e) => {
+                console.log("HR: Edit department typed:", e.target.value);
+                setEditEmployee({ ...editEmployee, department: e.target.value });
+              }}
             />
 
             <FormField
               label="Email"
               type="email"
               value={editEmployee.email}
-              onChange={(e) =>
-                setEditEmployee({ ...editEmployee, email: e.target.value })
-              }
+              onChange={(e) => {
+                console.log("HR: Edit email typed:", e.target.value);
+                setEditEmployee({ ...editEmployee, email: e.target.value });
+              }}
             />
           </>
         )}
       </Modal>
 
+
       {/* --- Delete Confirmation Modal --- */}
       <Modal
         show={showDeleteModal}
         title="Confirm Delete"
-        onClose={() => setShowDeleteModal(false)}
+        onClose={() => {
+          console.log("HR: Delete modal closed");
+          setShowDeleteModal(false);
+        }}
         footer={
           <>
             <Button
               variant="secondary"
-              onClick={() => setShowDeleteModal(false)}
+              onClick={() => {
+                console.log("HR: Delete canceled");
+                setShowDeleteModal(false);
+              }}
             >
               Cancel
             </Button>
@@ -359,7 +407,7 @@ function HRDashboard() {
             <Button
               variant="danger"
               onClick={() => {
-                // Remove employee
+                console.log("HR: Employee deleted:", employeeToDelete);
                 setEmployees(employees.filter(emp => emp.id !== employeeToDelete.id));
                 setShowDeleteModal(false);
               }}
