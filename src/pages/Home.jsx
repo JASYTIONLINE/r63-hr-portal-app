@@ -5,12 +5,15 @@
 // ----------------------------------------------------
 
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 import Section from "../components/Section.jsx";
 import Card from "../components/Card.jsx";
 import Button from "../components/Button.jsx";
 
 function Home() {
+  const navigate = useNavigate();
+
   return (
     <Section className="section-graphite">
 
@@ -25,7 +28,14 @@ function Home() {
             personal dashboard quickly and securely.
           </p>
 
-          <Button className="w-100" variant="primary">
+          <Button
+            className="w-100"
+            variant="primary"
+            onClick={() => {
+              console.log("Home: Enter Portal clicked");
+              navigate("/login");
+            }}
+          >
             Enter Portal
           </Button>
         </Card>
