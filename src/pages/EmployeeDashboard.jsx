@@ -1,7 +1,5 @@
 // ----------------------------------------------------
-// EmployeeDashboard.jsx
-// Profile card + Leave Request card
-// Uses Section, Card, FormField, Button
+// EmployeeDashboard.jsx (Instrumented for Debugging)
 // ----------------------------------------------------
 
 import React, { useState } from "react";
@@ -12,6 +10,8 @@ import FormField from "../components/FormField.jsx";
 import Button from "../components/Button.jsx";
 
 function EmployeeDashboard() {
+
+  console.log("EmployeeDashboard rendered");
 
   // Profile state
   const [name, setName] = useState("");
@@ -35,23 +35,38 @@ function EmployeeDashboard() {
             <FormField
               label="Name"
               value={name}
-              onChange={(e) => setName(e.target.value)}
+              onChange={(e) => {
+                setName(e.target.value);
+                console.log("EMP: Profile name typed:", e.target.value);
+              }}
             />
 
             <FormField
               label="Department"
               value={department}
-              onChange={(e) => setDepartment(e.target.value)}
+              onChange={(e) => {
+                setDepartment(e.target.value);
+                console.log("EMP: Profile department typed:", e.target.value);
+              }}
             />
 
             <FormField
               label="Email"
               type="email"
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) => {
+                setEmail(e.target.value);
+                console.log("EMP: Profile email typed:", e.target.value);
+              }}
             />
 
-            <Button className="w-100 mt-3">
+            <Button
+              className="w-100 mt-3"
+              onClick={() => {
+                console.log("EMP: Save Changes clicked");
+                console.log("EMP: Profile data:", { name, department, email });
+              }}
+            >
               Save Changes
             </Button>
 
@@ -66,24 +81,43 @@ function EmployeeDashboard() {
               label="Start Date"
               type="date"
               value={startDate}
-              onChange={(e) => setStartDate(e.target.value)}
+              onChange={(e) => {
+                setStartDate(e.target.value);
+                console.log("EMP: Leave start date selected:", e.target.value);
+              }}
             />
 
             <FormField
               label="End Date"
               type="date"
               value={endDate}
-              onChange={(e) => setEndDate(e.target.value)}
+              onChange={(e) => {
+                setEndDate(e.target.value);
+                console.log("EMP: Leave end date selected:", e.target.value);
+              }}
             />
 
             <FormField
               label="Reason"
               value={reason}
-              onChange={(e) => setReason(e.target.value)}
+              onChange={(e) => {
+                setReason(e.target.value);
+                console.log("EMP: Leave reason typed:", e.target.value);
+              }}
               placeholder="Why do you need leave?"
             />
 
-            <Button className="w-100 mt-3">
+            <Button
+              className="w-100 mt-3"
+              onClick={() => {
+                console.log("EMP: Submit Leave clicked");
+                console.log("EMP: Leave request data:", {
+                  startDate,
+                  endDate,
+                  reason
+                });
+              }}
+            >
               Submit Request
             </Button>
 
