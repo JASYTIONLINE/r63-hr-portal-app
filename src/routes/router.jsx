@@ -26,8 +26,10 @@ const router = createBrowserRouter([
       { path: "login", element: <Login /> },
       { 
         path: "employee", 
+        // Allow both employees and HR to access employee dashboard
+        // HR members are also employees, so they should have access
         element: (
-          <ProtectedRoute requiredRole="employee">
+          <ProtectedRoute requiredRoles={["employee", "hr"]}>
             <EmployeeDashboard />
           </ProtectedRoute>
         )

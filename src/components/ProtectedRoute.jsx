@@ -24,7 +24,17 @@
 //   <ProtectedRoute requiredRole="hr">
 //     <HRDashboard />
 //   </ProtectedRoute>
+//   OR (for multiple roles):
+//   <ProtectedRoute requiredRoles={["employee", "hr"]}>
+//     <EmployeeDashboard />
+//   </ProtectedRoute>
 // If the user has no role or a mismatched role, they are redirected to /login.
+//
+// MULTIPLE ROLES SUPPORT:
+// The component accepts either requiredRole (string) or requiredRoles (array).
+// This allows routes to be accessible by multiple roles (e.g., HR members can
+// access employee routes since they are also employees). This structure is
+// Firebase-ready for Phase 2 where users may have multiple roles.
 //
 // ============================================================================
 
@@ -32,7 +42,21 @@ import React, { useState, useEffect } from "react";
 import { Navigate } from "react-router-dom";
 import { getUserRole } from "../utils/authHelper";
 
-function ProtectedRoute({ children, requiredRole }) {
+function ProtectedRoute({ children, requiredRole, requiredRoles }) {
+  // ========================================================================
+  // NORMALIZE ROLE REQUIREMENTS
+  // ========================================================================
+  // Support both requiredRole (string) and requiredRoles (array) for backward
+  // compatibility and flexibility. Normalize to array internally for consistent
+  // checking logic. This allows:
+  // - Single role: requiredRole="hr" → ["hr"]
+  // - Multiple roles: requiredRoles={["employee", "hr"]} → ["employee", "hr"]
+  //
+  // This structure is Firebase-ready: in Phase 2, routes can easily specify
+  // multiple allowed roles, and Firebase users with any of those roles can access.
+  // ========================================================================
+  const allowedRoles = requiredRoles || (requiredRole ? [requiredRole] : []);
+
   // ========================================================================
   // REACTIVE ROLE CHECKING
   // ========================================================================
@@ -87,9 +111,9 @@ function ProtectedRoute({ children, requiredRole }) {
   console.log("ProtectedRoute check:", {
     currentRole,
     roleToCheck,
-    requiredRole,
+    allowedRoles,
     isAuthenticated: roleToCheck !== null,
-    roleMatches: roleToCheck === requiredRole
+    hasAccess: allowedRoles.includes(roleToCheck)
   });
 
   // ========================================================================
@@ -108,18 +132,22 @@ function ProtectedRoute({ children, requiredRole }) {
   }
 
   // ========================================================================
-  // WRONG ROLE
+  // ROLE CHECK - MULTIPLE ROLES SUPPORT
   // ========================================================================
-  // If the user is logged in but doesn't have the required role for this
-  // route, redirect them to login. This prevents employees from accessing
-  // HR-only routes and vice versa.
+  // Check if the user's role is in the allowed roles array. This supports:
+  // - Single role routes: allowedRoles = ["hr"] → only HR can access
+  // - Multiple role routes: allowedRoles = ["employee", "hr"] → both can access
   //
-  // For example: An employee trying to access /hr will be redirected because
-  // their role ("employee") doesn't match the requiredRole ("hr").
+  // This allows HR members to access employee routes (since HR members are
+  // also employees), while still protecting HR-only routes from regular employees.
+  //
+  // Phase 2 Migration: When Firebase is integrated, this same logic will work
+  // with Firebase user roles. Only authHelper.js needs to change to read from
+  // Firebase instead of localStorage.
   // ========================================================================
-  if (requiredRole && roleToCheck !== requiredRole) {
+  if (allowedRoles.length > 0 && !allowedRoles.includes(roleToCheck)) {
     console.log(
-      `ProtectedRoute: User role "${roleToCheck}" doesn't match required "${requiredRole}", redirecting to /login`
+      `ProtectedRoute: User role "${roleToCheck}" not in allowed roles [${allowedRoles.join(", ")}], redirecting to /login`
     );
     return <Navigate to="/login" replace />;
   }
