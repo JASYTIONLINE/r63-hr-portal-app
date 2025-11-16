@@ -266,7 +266,7 @@ function HRDashboard() {
                       className="btn-sm me-2"
                       onClick={() => {
                         console.log("HR: Approve leave request:", req);
-                        setLeaveRequests(leaveRequests.map(item =>
+                        setLeaveRequests(prev => prev.map(item =>
                           item.id === req.id
                             ? { ...item, status: "Approved" }
                             : item
@@ -282,7 +282,7 @@ function HRDashboard() {
                       className="btn-sm"
                       onClick={() => {
                         console.log("HR: Deny leave request:", req);
-                        setLeaveRequests(leaveRequests.map(item =>
+                        setLeaveRequests(prev => prev.map(item =>
                           item.id === req.id
                             ? { ...item, status: "Denied" }
                             : item
