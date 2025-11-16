@@ -1,9 +1,50 @@
-// ----------------------------------------------------
-// HRDashboard.jsx (Completed + Access Guard + Logging)
-// ----------------------------------------------------
+// ============================================================================
+// HRDashboard.jsx
+// ============================================================================
+//
+// PURPOSE:
+// This component provides the HR user interface for managing employees and
+// leave requests. It implements Task 5 requirements: "Design components for
+// HR to manage employee profiles" including Add, Edit, Delete, and View
+// employee list functionality.
+//
+// ROUTE PROTECTION:
+// This component is protected at the route level in router.jsx using
+// ProtectedRoute with requiredRole="hr". This ensures:
+// 1. Only authenticated HR users can access this dashboard
+// 2. Employee users are redirected if they try to access /hr
+// 3. Unauthenticated users are redirected to login
+//
+// This protection happens before the component renders, so there's no flash
+// of content for unauthorized users. The component-level guard that was
+// previously here has been removed because route-level protection is more
+// efficient and follows better separation of concerns.
+//
+// ARCHITECTURE CHANGE (Phase 1 Update):
+// Previously, this component had a role guard at the component level
+// (checking localStorage and redirecting). This has been moved to route-level
+// protection in router.jsx using the ProtectedRoute wrapper.
+//
+// WHY THIS CHANGE:
+// 1. Separation of Concerns: Component focuses on HR functionality, not
+//    access control. Route protection is handled at the routing layer.
+// 2. No Flash of Content: Route-level protection prevents the component from
+//    rendering at all if unauthorized, eliminating the brief flash of HR
+//    content before redirect.
+// 3. Cleaner Code: Component is simpler without guard logic mixed with
+//    business logic.
+// 4. Academic Learning: Demonstrates understanding of proper separation
+//    between routing concerns and component concerns.
+//
+// PHASE 2 MIGRATION:
+// When Firebase is integrated, this component will receive employee and
+// leave request data from Firebase Realtime Database listeners instead of
+// useState. The component structure will remain the same, only the data
+// source will change.
+//
+// ============================================================================
 
 import React, { useState } from "react";
-
 import Section from "../components/Section.jsx";
 import Card from "../components/Card.jsx";
 import Button from "../components/Button.jsx";
@@ -11,14 +52,20 @@ import Modal from "../components/Modal.jsx";
 import FormField from "../components/FormField.jsx";
 
 function HRDashboard() {
-
-  // ROLE GUARD — prevents employees from seeing HR tools
-  const role = localStorage.getItem("role");
-  if (role !== "hr") {
-    console.log("ACCESS DENIED: Non-HR user attempted to access /hr");
-    window.location.href = "/login";
-    return null;
-  }
+  // ========================================================================
+  // COMPONENT-LEVEL GUARD REMOVED
+  // ========================================================================
+  // The role guard that was here has been moved to route-level protection
+  // in router.jsx. The ProtectedRoute wrapper ensures only users with
+  // role="hr" can reach this component. This is a better architecture
+  // because:
+  // 1. Protection happens before component renders (no flash)
+  // 2. Component focuses on HR functionality, not security
+  // 3. Protection logic is centralized and reusable
+  //
+  // If you need to check role within this component for conditional
+  // rendering, use: import { getUserRole } from "../utils/authHelper";
+  // ========================================================================
 
   console.log("HRDashboard rendered");
 

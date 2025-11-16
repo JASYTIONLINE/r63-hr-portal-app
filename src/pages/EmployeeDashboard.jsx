@@ -1,6 +1,31 @@
-// ----------------------------------------------------
-// EmployeeDashboard.jsx (Instrumented for Debugging)
-// ----------------------------------------------------
+// ============================================================================
+// EmployeeDashboard.jsx
+// ============================================================================
+//
+// PURPOSE:
+// This component provides the employee self-service interface, allowing
+// employees to manage their profile and submit leave requests. It implements
+// Task 7: "Employee registration component" where employees can "sign up"
+// with personal details and Task 5 requirements for employee functionality.
+//
+// ROUTE PROTECTION:
+// This component is protected at the route level in router.jsx using
+// ProtectedRoute with requiredRole="employee". This ensures:
+// 1. Only authenticated employees can access this dashboard
+// 2. HR users are redirected if they try to access /employee
+// 3. Unauthenticated users are redirected to login
+//
+// This protection happens before the component renders, so there's no flash
+// of content for unauthorized users.
+//
+// PHASE 2 MIGRATION:
+// When Firebase is integrated, this component will:
+// 1. Load employee profile data from Firebase Realtime Database
+// 2. Submit leave requests to Firebase instead of console.log
+// 3. Receive real-time updates when HR approves/denies leave requests
+// The component structure and UI will remain largely the same.
+//
+// ============================================================================
 
 import React, { useState } from "react";
 
