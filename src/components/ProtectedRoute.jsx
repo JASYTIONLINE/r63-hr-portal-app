@@ -38,7 +38,7 @@
 //
 // ============================================================================
 
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Navigate } from "react-router-dom";
 import { getUserRole } from "../utils/authHelper";
 
@@ -58,58 +58,36 @@ function ProtectedRoute({ children, requiredRole, requiredRoles }) {
   const allowedRoles = requiredRoles || (requiredRole ? [requiredRole] : []);
 
   // ========================================================================
-  // REACTIVE ROLE CHECKING
-  // ========================================================================
-  // We use useState to store the current role and useEffect to keep it
-  // synchronized with localStorage. This ensures the component re-renders
-  // when authentication state changes, even if the route doesn't change.
-  //
-  // Why useState + useEffect instead of just calling getUserRole() directly?
-  // - Makes the component reactive to localStorage changes
-  // - Ensures fresh checks on every route navigation
-  // - Prepares for Phase 2 where we'll listen to Firebase Auth state changes
-  // ========================================================================
-  const [currentRole, setCurrentRole] = useState(getUserRole());
-
-  // Update role state whenever the component mounts or when localStorage changes
-  useEffect(() => {
-    // Check role on mount and whenever route changes
-    const role = getUserRole();
-    setCurrentRole(role);
-
-    // Listen for storage events (cross-tab) and custom events (same-tab)
-    const handleStorageChange = () => {
-      const newRole = getUserRole();
-      setCurrentRole(newRole);
-    };
-
-    window.addEventListener("storage", handleStorageChange);
-    window.addEventListener("loginStateChange", handleStorageChange);
-
-    // Cleanup listeners on unmount
-    return () => {
-      window.removeEventListener("storage", handleStorageChange);
-      window.removeEventListener("loginStateChange", handleStorageChange);
-    };
-  }, []); // Empty dependency array means this runs once on mount
-
-  // ========================================================================
-  // ALWAYS CHECK LATEST ROLE ON RENDER
+  // DIRECT ROLE CHECK ON RENDER
   // ========================================================================
   // We check localStorage directly on every render to ensure we have the
-  // absolute latest value. This is critical because:
-  // 1. React Router might reuse component instances between route changes
-  // 2. localStorage can change outside of React's state management
-  // 3. We need immediate protection, not delayed state updates
+  // absolute latest value. This approach is simpler and more efficient than
+  // maintaining state because:
   //
-  // We use this direct check for the actual protection logic, while useState
-  // helps with reactivity to events.
+  // 1. Immediate Protection: The check happens synchronously on every render,
+  //    ensuring protection is always up-to-date without waiting for state updates.
+  //
+  // 2. React Router Navigation: When users navigate between routes, React Router
+  //    will re-render this component, triggering a fresh role check automatically.
+  //    This means protection works correctly even if localStorage changes between
+  //    route navigations.
+  //
+  // 3. Simplicity: No state management overhead, no event listeners, no cleanup
+  //    needed. The component is easier to understand and maintain.
+  //
+  // 4. Phase 1 Sufficiency: For Phase 1's simulated authentication, this direct
+  //    check is sufficient. Users will be re-checked on every route navigation,
+  //    which covers the primary use case.
+  //
+  // Note: This approach may not immediately reflect cross-tab localStorage
+  // changes (e.g., logging out in another browser tab). However, for Phase 1,
+  // this is acceptable. In Phase 2 with Firebase, we'll use Firebase Auth
+  // listeners which provide real-time cross-tab synchronization automatically.
   // ========================================================================
   const roleToCheck = getUserRole();
 
   // Debug logging to help diagnose route protection issues
   console.log("ProtectedRoute check:", {
-    currentRole,
     roleToCheck,
     allowedRoles,
     isAuthenticated: roleToCheck !== null,
