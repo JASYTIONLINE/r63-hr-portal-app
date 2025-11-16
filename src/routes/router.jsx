@@ -6,13 +6,14 @@
 
 import { createBrowserRouter, Navigate } from "react-router-dom";
 import Layout from "../layout/Layout.jsx";
-
+import ProtectedRoute from "../components/ProtectedRoute.jsx";
 import Home from "../pages/Home.jsx";
 import Login from "../pages/Login.jsx";
 import EmployeeDashboard from "../pages/EmployeeDashboard.jsx";
 import HRDashboard from "../pages/HRDashboard.jsx";
 
 const router = createBrowserRouter([
+  
   {
     path: "/",
     element: <Layout />,
@@ -23,10 +24,23 @@ const router = createBrowserRouter([
       // Pages
       { path: "home", element: <Home /> },
       { path: "login", element: <Login /> },
-      { path: "employee", element: <EmployeeDashboard /> },
-      { path: "hr", element: <HRDashboard /> }
+      { 
+        path: "employee", 
+        element: (
+          <ProtectedRoute requiredRole="employee">
+            <EmployeeDashboard />
+          </ProtectedRoute>
+        )
+      },
+      { 
+        path: "hr", 
+        element: (
+          <ProtectedRoute requiredRole="hr">
+            <HRDashboard />
+          </ProtectedRoute>
+        )
+      }
     ]
   }
 ]);
-
 export default router;
