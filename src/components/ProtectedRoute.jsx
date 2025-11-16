@@ -141,5 +141,3 @@ function ProtectedRoute({ children, requiredRole, requiredRoles }) {
 }
 
 export default ProtectedRoute;
-
-
