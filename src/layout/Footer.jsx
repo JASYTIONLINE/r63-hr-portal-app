@@ -1,43 +1,59 @@
-// ----------------------------------------------------
-// Component: [ComponentName].jsx
-// Description:
-// This file defines a reusable React component for the HR Portal Front-End.
-// Each component follows JASYTI coding conventions:
-// - React functional syntax (no class components)
-// - Bootstrap 5 utility classes for layout and style
-// - Paragraph-style comments explaining purpose and logic
-// - Exports at bottom for consistent structure
-// ----------------------------------------------------
+// ============================================================================
+// Footer.jsx
+// ============================================================================
+//
+// PURPOSE:
+// This component provides the global footer that appears at the bottom of
+// every page. It displays copyright information and attribution, creating
+// a professional appearance and completing the standard web page structure
+// (Header → Content → Footer).
+//
+// FOOTER PATTERN:
+// Footers are a standard web design element that provide:
+// 1. Visual closure to the page layout
+// 2. Space for copyright and legal information
+// 3. Consistent branding across all pages
+// 4. Professional appearance that signals a complete application
+//
+// This footer is intentionally minimal, containing only essential information
+// (copyright and attribution). This keeps the focus on the main content while
+// still meeting the project requirement for a persistent layout footer.
+//
+// LAYOUT INTEGRATION:
+// This component is rendered in Layout.jsx, which means it appears on every
+// page automatically. No individual page components need to include it.
+//
+// PHASE 2 MIGRATION:
+// This component will remain unchanged in Phase 2. The footer content and
+// styling will stay the same regardless of Firebase integration.
+//
+// ============================================================================
 
-// Import core React dependencies
 import React from "react";
 
-// Import Bootstrap (if needed for isolated components)
-// Note: main.jsx already includes Bootstrap globally.
-// Import only if this component is used standalone outside Layout.
-import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/js/bootstrap.bundle.min.js";
-
-// Optional: Import shared utilities or components (uncomment when used)
-// import { ActionButton } from "../components/ActionButton.jsx";
-// import { CardContainer } from "../components/CardContainer.jsx";
-
-// ----------------------------------------------------
-// Functional Component Definition
-// ----------------------------------------------------
-
-// Paragraph: Describe what the component does in one or two sentences.
-// Example: The Navbar component provides global site navigation visible on all pages.
-function ComponentName() {
+function Footer() {
   return (
-    <div className="container text-center mt-5">
-      {/* Replace with actual JSX for this component */}
-      <p className="text-muted">[ComponentName] placeholder rendered successfully.</p>
-    </div>
+    // ========================================================================
+    // FOOTER STRUCTURE
+    // ========================================================================
+    // The footer uses Bootstrap classes for styling:
+    // - bg-dark: Dark background color (matches Navbar)
+    // - text-light: Light text color for contrast
+    // - py-3: Vertical padding (top and bottom)
+    // - mt-5: Top margin to separate from main content
+    // - text-center: Centers the text horizontally
+    //
+    // The <footer> element is semantic HTML5 that indicates this is the
+    // footer section of the page, which helps with accessibility and SEO.
+    // ========================================================================
+    <footer className="bg-dark text-light py-3 mt-5 text-center">
+      <div className="container">
+        <p className="mb-0">
+          Created by JASYTI &copy; November 2025
+        </p>
+      </div>
+    </footer>
   );
 }
 
-// ----------------------------------------------------
-// Export Component
-// ----------------------------------------------------
-export default ComponentName;
+export default Footer;
