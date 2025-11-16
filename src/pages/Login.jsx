@@ -23,22 +23,26 @@ function Login() {
   };
 
   // Handle Login click
-  const handleLogin = (e) => {
-    e.preventDefault();
-    console.log("LOGIN BUTTON CLICKED");
-    console.log("Username:", username);
-    console.log("Role:", role);
-    console.log("---- navigating now ----");
+ const handleLogin = (e) => {
+  e.preventDefault();
 
-    if (role === "employee") navigate("/employee");
-    else if (role === "hr") navigate("/hr");
-  };
+  console.log("LOGIN BUTTON CLICKED");
+  console.log("Username:", username);
+  console.log("Role selected:", role);
 
-  // Handle SignUp click
-  const handleSignup = () => {
-    console.log("SIGN UP CLICKED");
-    // In the future → navigate("/signup")
-  };
+  // Save role to localStorage so routing can enforce it
+  localStorage.setItem("role", role);
+  console.log("Role saved to localStorage:", role);
+
+  console.log("---- navigating now ----");
+
+  if (role === "employee") {
+    navigate("/employee");
+  } else if (role === "hr") {
+    navigate("/hr");
+  }
+};
+
 
   return (
     <div className="container mt-5 d-flex justify-content-center">
